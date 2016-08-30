@@ -1,6 +1,7 @@
 #pragma once
 #include "System.h"
-
+class Light;
+class Camera;
 //もでううらう
 class Model{
 public:
@@ -10,18 +11,11 @@ public:
 
 	void Update();
 
-	void Model::Render(
-		LPDIRECT3DDEVICE9 pd3dDevice,
-		D3DXMATRIX viewMatrix,
-		D3DXMATRIX projMatrix,
-		D3DXVECTOR4* diffuseLightDirection,
-		D3DXVECTOR4* diffuseLightColor,
-		D3DXVECTOR4 ambientLight,
-		int numDiffuseLight
-		);
+	void Model::Render(LPDIRECT3DDEVICE9 pd3dDevice,Camera camera,Light light);
 
 	void Release();
 
+//set
 	void SetPosition(D3DXVECTOR3 pos);
 protected:
 	//読み込むXファイル指定す

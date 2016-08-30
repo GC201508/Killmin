@@ -1,5 +1,6 @@
 #include "Model.h"
-
+#include "Light.h"
+#include "Camera.h"
 Model::Model()
 {
 	mesh = NULL;
@@ -80,15 +81,7 @@ void Model::Update()
 }
 
 //描画
-void Model::Render(
-	LPDIRECT3DDEVICE9 pd3dDevice,
-	D3DXMATRIX viewMatrix,
-	D3DXMATRIX projMatrix,
-	D3DXVECTOR4* diffuseLightDirection,
-	D3DXVECTOR4* diffuseLightColor,
-	D3DXVECTOR4 ambientLight,
-	int numDiffuseLight
-	)
+void Model::Render(LPDIRECT3DDEVICE9 pd3dDevice,Camera camera,Light light)
 {
 	effect->SetTechnique("さといも"); //アクティブなテクニックを設定する。
 	effect->Begin(NULL, D3DXFX_DONOTSAVESHADERSTATE); //テクニックの適用を開始する。
@@ -101,15 +94,15 @@ void Model::Render(
 
 	//->SetMatrix  非転置行列を設定するみたい。　非転置行列ってなんだよおい
 	effect->SetMatrix("g_worldMatrix", &mWorld);//ワールド行列の転送
-	effect->SetMatrix("g_viewMatrix", &viewMatrix);//ビュー行列の転送
-	effect->SetMatrix("g_projectionMatrix", &projMatrix);//プロジェクション行列の転送
+	effect->SetMatrix("g_viewMatrix", &camera.GetViewMatrix());//ビュー行列の転送
+	effect->SetMatrix("g_projectionMatrix", &camera.GetProjectionMatrix());//プロジェクション行列の転送
 	effect->SetMatrix("g_rotationMatrix", &mRotation);//回転行列を転送
 
 	//->SetVectorArray　ベクトルの配列を設定する
-	effect->SetVectorArray("g_diffuseLightColor", diffuseLightColor, numDiffuseLight); //ライトのカラーを転送
+	effect->SetVectorArray("g_diffuseLightColor", light.getDiffuseLColor(), light.getLNum()); //ライトのカラーを転送
 
 	//->SetVector　ベクトルを設定する
-	effect->SetVector("g_ambientLight", &ambientLight); //環境光を設定
+	effect->SetVector("g_ambientLight", &light.getAmbientL()); //環境光を設定
 
 	//->CommitChanges　アクティブなパス内で生じるステート変化をレンダリングの前にデバイスに伝えるそうです。　・・・どゆ意味？
 	effect->CommitChanges(); //データの転送が確定する。 描画を行う前に一度だけ呼び出す
