@@ -3,14 +3,23 @@
 #include "Light.h"
 #include "Testiger.h"
 #include "Ground.h"
+#include "Player.h"
+#include "Sonya.h"
 //-----------------------------------------------------------------------------
 // グローバル変数。
 //-----------------------------------------------------------------------------
 
+//lib
 Camera camera;//カメラ
 Light light;//ライト
+
+//model
 Tiger tora;//とらちゃん
 Ground ground;//地面
+Sonya sonya;//ソーニャちゃん
+
+//なんとかなんとか
+Player player;//プレイヤー
 
 //-----------------------------------------------------------------------------
 // Name: ゲームを初期化。
@@ -25,7 +34,13 @@ void Init()
 	tora.SetPosition(D3DXVECTOR3(0.5f, 0.5f, 0.0f));
 	ground.Init(g_pd3dDevice);
 	ground.SetPosition(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	sonya.Init(g_pd3dDevice);
+	sonya.SetPosition(D3DXVECTOR3(-3.0f, 1.0f, 0.0f));
 	
+	//ぷれいや情報追加
+	player.setModel(&sonya);
+	player.Init();
+
 	//かえらしょきあ
 	camera.Init();
 }
@@ -42,7 +57,7 @@ VOID Render()
 	/*	-	-	-	-	-	-	-	-	*/
 	tora.Render( g_pd3dDevice,camera,light); //とらちゃん
 	ground.Render(g_pd3dDevice, camera, light);//地面
-	
+	sonya.Render(g_pd3dDevice, camera, light);//ソーニャちゃん
 	/*	-	-	-	-	-	-	-	-	*/
 	
 	// シーンの描画終了。
@@ -58,6 +73,9 @@ void Update()
 	light.Update(); //らいと
 	camera.Update();//かめら
 	tora.Update();//とらちゃん
+	sonya.Update();//そにゃちゃん
+	
+	player.Update();//ぷれいや
 }
 //-----------------------------------------------------------------------------
 //ゲームが終了するときに呼ばれる処理。
@@ -66,4 +84,5 @@ void Terminate()
 {
 	tora.Release();
 	ground.Release();
+	sonya.Update();
 }
