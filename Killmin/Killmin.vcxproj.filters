@@ -57,5 +57,8 @@
     <ClInclude Include="Player.h">
       <Filter>Source\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Sonya.h">
+      <Filter>Source\Model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

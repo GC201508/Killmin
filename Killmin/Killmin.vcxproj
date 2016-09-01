@@ -95,6 +95,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="Sonya.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Testiger.h" />
   </ItemGroup>
