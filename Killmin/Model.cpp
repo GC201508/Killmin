@@ -24,6 +24,11 @@ void Model::SetPosition(D3DXVECTOR3 pos)
 	position = pos;
 }
 
+D3DXVECTOR3 Model::GetPosition()
+{
+	return position;
+}
+
 LPCTSTR Model::FileName()
 {
 	return "";

@@ -17,6 +17,9 @@ public:
 
 //set
 	void SetPosition(D3DXVECTOR3 pos);
+
+//get
+	D3DXVECTOR3 GetPosition();
 protected:
 	//読み込むXファイル指定す
 	virtual LPCTSTR FileName() = 0;
