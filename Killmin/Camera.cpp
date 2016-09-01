@@ -5,7 +5,7 @@ Camera::Camera()
 {
 	Near = 0.1f;
 	Far = 100.0f;
-	aspect = 1.0f;
+	aspect = 1.8f;
 }
 //デストラクタ
 Camera::~Camera()
@@ -100,8 +100,8 @@ void Camera::Update()
 //カメラの初期化。
 void Camera::Init()
 {
-	vEyePt = D3DXVECTOR3(0.0f, 7.0f, -20.0f);
-	vLookatPt = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	vEyePt = D3DXVECTOR3(0.0f, 2.0f, -10.0f);
+	vLookatPt = D3DXVECTOR3(0.0f, -2.0f, 10.0f);
 	vUpVec = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 
 	Update();
