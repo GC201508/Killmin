@@ -31,14 +31,14 @@ void Init()
 
 	//Ç‡Ç≈Ç§ÇµÇÂÇ´Ç©
 	tora.Init(g_pd3dDevice);
-	tora.SetPosition(D3DXVECTOR3(0.5f, 0.5f, 0.0f));
+	tora.SetPosition(D3DXVECTOR3(0.5f, 0.77f, 0.0f));
 	ground.Init(g_pd3dDevice);
 	ground.SetPosition(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	sonya.Init(g_pd3dDevice);
-	sonya.SetPosition(D3DXVECTOR3(-3.0f, 1.0f, 0.0f));
+	sonya.SetPosition(D3DXVECTOR3(-3.0f, 1.04f, 0.0f));
 	
 	//Ç’ÇÍÇ¢Ç‚èÓïÒí«â¡
-	player.setModel(&sonya);
+	player.setModel(&tora);
 	player.Init();
 
 	//Ç©Ç¶ÇÁÇµÇÂÇ´Ç†
