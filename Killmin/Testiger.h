@@ -6,8 +6,8 @@
 class Tiger : public Model {
 public:
 	
-	Tiger(); //コンスト
-	~Tiger(); //デスト
+	Tiger(){} //コンスト
+	~Tiger(){} //デスト
 
-	LPCTSTR FileName()override;
+	LPCTSTR FileName()override { return "Tiger.x"; }
 };
