@@ -11,45 +11,48 @@
     <Filter Include="Source\Model">
       <UniqueIdentifier>{4881dba2-2212-4b9a-8cf1-8b58a63648f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\lib">
+      <UniqueIdentifier>{416d132e-a160-46dc-a77c-88db44190083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Pikumin">
+      <UniqueIdentifier>{9d31983d-8e46-474d-ae61-e773f2947630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Camera">
+      <UniqueIdentifier>{f37bb03a-f7be-46b0-97f1-0d3a0b288034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Light">
+      <UniqueIdentifier>{2bef6273-0f60-4a9b-ae17-a4ab1d4c23a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="System.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>Source\Model</Filter>
     </ClCompile>
-    <ClCompile Include="Testiger.cpp">
-      <Filter>Source\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source\Player</Filter>
     </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="Pikumin.cpp">
+      <Filter>Source\Pikumin</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source\Light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="System.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>Source\Model</Filter>
     </ClInclude>
     <ClInclude Include="Testiger.h">
       <Filter>Source\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
       <Filter>Source\Model</Filter>
@@ -59,6 +62,21 @@
     </ClInclude>
     <ClInclude Include="Sonya.h">
       <Filter>Source\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Source\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="D3dxFormula.h">
+      <Filter>Source\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="Pikumin.h">
+      <Filter>Source\Pikumin</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Source\Light</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

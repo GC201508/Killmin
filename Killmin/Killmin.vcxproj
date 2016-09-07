@@ -85,13 +85,15 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Pikumin.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="System.cpp" />
-    <ClCompile Include="Testiger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="D3dxFormula.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="Pikumin.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Model.h" />
