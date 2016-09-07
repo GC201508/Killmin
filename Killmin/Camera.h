@@ -94,4 +94,9 @@ public:
 	*@brief	ƒJƒƒ‰‚Ì‰Šú‰»B
 	*/
 	void Init();
+/*	-	-	-	-	-	-	-	-	-	-	-	*/
+//TODO:‚±‚±‚©‚çZ.Takemasa‚Ìˆ—					//
+	void KaitenCamera();
+	void MoveCamera();
+/*	-	-	-	-	-	-	-	-	-	-	-	*/
 };
