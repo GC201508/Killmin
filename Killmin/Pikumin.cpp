@@ -5,7 +5,7 @@
 Pikumin::Pikumin()
 {//初期化を行う
 	lpModel = nullptr;
-	lpPlayer = nullptr;
+	lpPlayerPos = nullptr;
 	addPos = Vec3(0.f, 0.f, 0.f);
 }
 
@@ -28,7 +28,7 @@ void Pikumin::Init()
 
 void Pikumin::Update()
 {//更新行う
-
+	StaringPlayer();
 }
 
 void Pikumin::StaringPlayer()
