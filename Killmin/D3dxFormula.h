@@ -23,4 +23,7 @@ public:
 		lpV->y /= len;
 		lpV->z /= len;
 	}
+
+	//XŽ²ZŽ²‚ÌŒü‚«
+	typedef struct xzDir{ float x = 0; float z = 0; };
 };
