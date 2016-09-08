@@ -88,11 +88,15 @@
     <ClCompile Include="Pikumin.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="System.cpp" />
+    <ClCompile Include="USBGamePad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="D3dxFormula.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="InputKey.h" />
+    <ClInclude Include="PadCode.h" />
+    <ClInclude Include="USBGamePad.h" />
     <ClInclude Include="Pikumin.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Light.h" />

@@ -23,6 +23,9 @@
     <Filter Include="Source\Light">
       <UniqueIdentifier>{2bef6273-0f60-4a9b-ae17-a4ab1d4c23a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\lib\GamePad">
+      <UniqueIdentifier>{40f1dc72-8815-426d-9c9d-392e170ee73c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +48,9 @@
     </ClCompile>
     <ClCompile Include="Light.cpp">
       <Filter>Source\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="USBGamePad.cpp">
+      <Filter>Source\lib\GamePad</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +83,15 @@
     </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Source\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="USBGamePad.h">
+      <Filter>Source\lib\GamePad</Filter>
+    </ClInclude>
+    <ClInclude Include="PadCode.h">
+      <Filter>Source\lib\GamePad</Filter>
+    </ClInclude>
+    <ClInclude Include="InputKey.h">
+      <Filter>Source\lib</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
