@@ -20,4 +20,5 @@ public:
 private:
 	Model* lpModel;
 	Vec3* addPos;
+	float* AngleY;
 };

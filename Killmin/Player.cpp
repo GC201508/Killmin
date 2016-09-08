@@ -17,6 +17,8 @@ void Player::Init()
 	}
 	else{
 		addPos = lpModel->getLpPos();
+		AngleY = lpModel->getLpAngle();
+		
 	}
 }
 
@@ -39,7 +41,6 @@ const struct MOVE{
 void Player::Move()
 {//プレイヤーを動かす
 	float spd = PLAYER_SPEED;
-	static float AngleY;
 	dxFor::xzDir dir;
 	InputKey Input;
 
@@ -49,13 +50,13 @@ void Player::Move()
 		Input.InputKeyCode(MOVE::jRIGHT))
 	{ 
 		dir.x++; 
-		AngleY = D3DXToRadian(-90.0f); 
+		*AngleY = D3DXToRadian(-90.0f); 
 	}
 	else if (Input.InputKeyCode(MOVE::kLEFT) or 
 		Input.InputKeyCode(MOVE::jLEFT))
 	{ 
 		dir.x--;
-		AngleY = D3DXToRadian(90.0f); 
+		*AngleY = D3DXToRadian(90.0f);
 	}
 
 
@@ -65,13 +66,13 @@ void Player::Move()
 		Input.InputKeyCode(MOVE::jADVANCE))
 	{ 
 		dir.z++;
-		AngleY = D3DXToRadian(180.0f); 
+		*AngleY = D3DXToRadian(180.0f);
 	}
 	else if (Input.InputKeyCode(MOVE::kBACK) or 
 		Input.InputKeyCode(MOVE::jBACK))
 	{ 
 		dir.z--; 
-		AngleY = D3DXToRadian(0.0f);
+		*AngleY = D3DXToRadian(0.0f);
 	}
 
 
@@ -87,7 +88,7 @@ void Player::Move()
 		D3DXMatrixTranslation(&mTrans, addPos->x, addPos->y, addPos->z);
 		//回転行列
 		Matrix mRot;
-		D3DXMatrixRotationY(&mRot, AngleY);
+		D3DXMatrixRotationY(&mRot, *AngleY);
 		lpModel->setWorld(mRot * mTrans);
 	}
 }

@@ -12,6 +12,7 @@ Model::Model()
 	position.x = 0.0f;
 	position.y = 0.0f;
 	position.z = 0.0f;
+	angle = 0.0f;
 }
 
 Model::~Model()
@@ -82,7 +83,11 @@ void Model::Init(LPDIRECT3DDEVICE9 pd3dDevice)
 void Model::Update()
 {
 	//ワールド行列の更新
-	D3DXMatrixTranslation(&mWorld, position.x, position.y, position.z);
+	D3DXMatrixTranslation(&mTrans, position.x, position.y, position.z);
+
+	//回転行列の更新
+	D3DXMatrixRotationY(&mRotation, angle);
+	setWorld(mRotation * mTrans);
 }
 
 //描画

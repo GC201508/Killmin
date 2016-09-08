@@ -17,13 +17,14 @@ public:
 
 //set
 	void SetPosition(D3DXVECTOR3 pos);
-
-//get
+	void setWorld(Matrix wol){ mWorld = wol; }
+	//get
 	D3DXVECTOR3 GetPosition();
+	Vec3* getLpPos(){ return &position; }//posアドレスを返す
+	float* getLpAngle(){ return &angle; }//angleアドレス返せ
 protected:
 	//読み込むXファイル指定す
 	virtual LPCTSTR FileName() = 0;
-
 	D3DXVECTOR3 position;			//座標
 	LPD3DXMESH mesh;				//メッシュ
 	LPDIRECT3DTEXTURE9* textures;	//テクスチャ
@@ -32,4 +33,6 @@ protected:
 	D3DXMATRIX	mWorld;				//ワールド行列
 	D3DXMATRIX	mRotation;			//回転行列
 
+	Matrix mTrans;
+	float angle;
 };
