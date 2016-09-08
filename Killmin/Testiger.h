@@ -5,7 +5,6 @@
 //虎クラス。
 class Tiger : public Model {
 public:
-	
 	Tiger(){} //コンスト
 	~Tiger(){} //デスト
 
