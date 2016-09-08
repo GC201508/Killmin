@@ -1,10 +1,13 @@
 #include "System.h"
 #include "Camera.h"
 #include "Light.h"
+//使用モデル
 #include "Testiger.h"
 #include "Ground.h"
-#include "Player.h"
 #include "Sonya.h"
+//役割
+#include "Player.h"
+#include "Pikumin.h"
 //-----------------------------------------------------------------------------
 // グローバル変数。
 //-----------------------------------------------------------------------------
@@ -20,6 +23,7 @@ Sonya sonya;//ソーニャちゃん
 
 //なんとかなんとか
 Player player;//プレイヤー
+Pikumin pikumin;
 
 //-----------------------------------------------------------------------------
 // Name: ゲームを初期化。
@@ -39,7 +43,9 @@ void Init()
 	
 	//ぷれいや情報追加
 	player.setModel(&tora);
-	player.Init();
+
+	//ぴくみん情報追加
+	//pikumin.setModel(&tora);
 
 	//かえらしょきあ
 	camera.Init();
@@ -76,6 +82,7 @@ void Update()
 	sonya.Update();//そにゃちゃん
 	
 	player.Update();//ぷれいや
+	pikumin.Update();//ぴくみん
 }
 //-----------------------------------------------------------------------------
 //ゲームが終了するときに呼ばれる処理。
