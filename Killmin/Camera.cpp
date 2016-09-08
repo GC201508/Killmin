@@ -1,5 +1,5 @@
 #include "Camera.h"
-#define CamRotSpd 0.03f  //回転速さ
+#define CamRotSpd 0.005f  //回転速さ
 #define CamMoveSpd 0.04f  //動く速さ
 
 //コンストラクタ。
@@ -124,35 +124,22 @@ void Camera::KaitenCamera()
 	D3DXVec3Cross(&vAxis, &vUP, &toPos);
 	dxFor::Vec3Normalize(&vAxis);
 	float spd = CamRotSpd;
+	dxFor::xzDir Dir;
 
-	if (onKey(RotLEFT) || onKey(RotRIGHT))
-	{
-		if (onKey(RotLEFT))
-		{// ,キー、左回転
-			spd *= 1.f;
-		}
-		else if (onKey(RotRIGHT))
-		{// .キー、右回転
-			spd *= -1.f;
-		}
-		D3DXMatrixRotationY(&mRot, spd);
+	if (onKey(RotLEFT) or onKey(RotRIGHT))
+	{//横回転
+		if (onKey(RotLEFT)){ Dir.x++; }
+		else if (onKey(RotRIGHT)){ Dir.x--;}
+		D3DXMatrixRotationY(&mRot, spd * Dir.x);
 		dxFor::Vec3Transform(&toPos, &mRot);
 		D3DXVec3Add(&vEyePt, &vLookatPt, &toPos);
 	}
 
-	if (onKey(RotUP) || onKey(RotDOWN))
-	{
-		spd = CamRotSpd;
-
-		if (onKey(RotUP))
-		{// [キー、上回転
-			spd *= -1.f;
-		}
-		else if (onKey(RotDOWN))
-		{// ]キー、下回転
-			spd *= 1.f;
-		}
-		D3DXMatrixRotationAxis(&mRot, &vAxis, spd);
+	if (onKey(RotUP) or onKey(RotDOWN))
+	{//縦回転
+		if (onKey(RotUP)){ Dir.z--; }
+		else if (onKey(RotDOWN)){ Dir.z++; }
+		D3DXMatrixRotationAxis(&mRot, &vAxis, spd * Dir.z);
 		dxFor::Vec3Transform(&toPos, &mRot);
 		D3DXVec3Add(&vEyePt, &vLookatPt, &toPos);
 	}
@@ -165,58 +152,40 @@ const int MoveUP = VK_SPACE;
 const int MoveDOWN = VK_LSHIFT;
 void Camera::MoveCamera()
 {//カメラ動かせ動かせ
+/*注視点とカメラの位置を同時に動かす*/
+
 	Vec3 toPos;
 	Vec3 vUP(0.0f, 1.0f, 0.0f);
 	float spd = CamMoveSpd;
+	Vec3 dir(0.f,0.f,0.f);
 
-	//→
-	if (onKey(MoveRIGHT))
-	{/*注視点とカメラの位置を同時に動かす*/
+	if (onKey(MoveRIGHT) or onKey(MoveLEFT))
+	{//左右
+		if (onKey(MoveRIGHT)){ dir.x--; }
+		else if (onKey(MoveLEFT)){ dir.x++; }
 		D3DXVec3Subtract(&toPos, &vEyePt, &vLookatPt);
 		D3DXVec3Cross(&toPos, &vUP, &toPos);
 		dxFor::Vec3Normalize(&toPos);
-		vLookatPt += toPos * -spd;
-		vEyePt += toPos * -spd;
-	}
-	//←
-	else if (onKey(MoveLEFT))
-	{/*注視点とカメラの位置を同時に動かす*/
-		D3DXVec3Subtract(&toPos, &vEyePt, &vLookatPt);
-		D3DXVec3Cross(&toPos, &vUP, &toPos);
-		dxFor::Vec3Normalize(&toPos);
-		vLookatPt += toPos * spd;
-		vEyePt += toPos * spd;
+		vLookatPt += toPos * spd * dir.x;
+		vEyePt += toPos * spd * dir.x;
 	}
 
-	//全身
-	if (onKey(MoveADVANCE))
-	{/*注視点とカメラの位置を同時に動かす*/
+	if (onKey(MoveADVANCE) or onKey(MoveBACK))
+	{//前後
+		if (onKey(MoveADVANCE)){ dir.z--; }
+		else if (onKey(MoveBACK)){ dir.z++; }
 		D3DXVec3Subtract(&toPos, &vEyePt, &vLookatPt);
 		toPos.y = 0.f;
 		dxFor::Vec3Normalize(&toPos);
-		vLookatPt += toPos * -spd;
-		vEyePt += toPos * -spd;
-	}
-	//鋼体
-	else if (onKey(MoveBACK))
-	{/*注視点とカメラの位置を同時に動かす*/
-		D3DXVec3Subtract(&toPos, &vEyePt, &vLookatPt);
-		toPos.y = 0.f;
-		dxFor::Vec3Normalize(&toPos);
-		vLookatPt += toPos * spd;
-		vEyePt += toPos * spd;
+		vLookatPt += toPos * spd * dir.z;
+		vEyePt += toPos * spd * dir.z;
 	}
 
-	//上野
-	if (onKey(MoveUP))
-	{/*注視点とカメラの位置を同時に動かす*/
-		vLookatPt.y += spd;
-		vEyePt.y += spd;
-	}
-	//下北沢
-	else if (onKey(MoveDOWN))
-	{/*注視点とカメラの位置を同時に動かす*/
-		vLookatPt.y += -spd;
-		vEyePt.y += -spd;
+	if (onKey(MoveUP) or onKey(MoveDOWN))
+	{//上下
+		if (onKey(MoveUP)){ dir.y++; }
+		else if (onKey(MoveDOWN)){ dir.y--; }
+		vLookatPt.y += spd * dir.y;
+		vEyePt.y += spd * dir.y;
 	}
 }
