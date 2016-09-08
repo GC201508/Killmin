@@ -5,13 +5,16 @@
 #include <strsafe.h>
 #pragma warning( default : 4996 )
 #include <cstdlib>
+#pragma comment(lib, "winmm.lib")
 
 /*	☆ D3DXってのがまどろっこしい ☆	*/
 #define Vec3 D3DXVECTOR3  //打つのめんどい
 #define Vec4 D3DXVECTOR4  //うつのめんどい
 #define Matrix D3DXMATRIX //宇津のめんこい
 #define onKey GetAsyncKeyState  //どっこい
-#define or ||					//はつこい
+#define onJoyKey Input::joypadKeyDown	//はつこい
+#define or ||					//ひよこい
+#define constatic const static	//ひまこい
 /*	-	-	なんたらデバイス	-	-	*/
 extern LPDIRECT3D9             g_pD3D;
 extern LPDIRECT3DDEVICE9       g_pd3dDevice;
