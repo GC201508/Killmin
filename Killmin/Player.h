@@ -1,4 +1,7 @@
 #pragma once
+/*
+	モデルにプレイヤー権限を与える
+*/
 #include "System.h"
 class Model;
 class Player
@@ -10,10 +13,11 @@ public:
 	void Init();
 	void Update();
 
-	void onKeyMove();
+	void Move();
+	void ChangeModel(Model* lp);
 //set
-	void setModel(Model* lp){ lpModel = lp; }
+	void setModel(Model* lp){ lpModel = lp; Init(); }
 private:
 	Model* lpModel;
-	D3DXVECTOR3* lpPos;
+	Vec3* addPos;
 };
