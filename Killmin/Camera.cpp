@@ -1,5 +1,5 @@
 #include "Camera.h"
-#define CamRotSpd 0.005f  //回転速さ
+#define CamRotSpd 0.01f  //回転速さ
 #define CamMoveSpd 0.04f  //動く速さ
 
 //コンストラクタ。
