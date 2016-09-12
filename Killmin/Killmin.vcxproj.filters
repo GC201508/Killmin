@@ -26,13 +26,13 @@
     <Filter Include="Source\lib\GamePad">
       <UniqueIdentifier>{40f1dc72-8815-426d-9c9d-392e170ee73c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\ModelData">
+      <UniqueIdentifier>{063ff54d-01ad-4fed-b710-c3198811c39c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source\Model</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source\Player</Filter>
@@ -52,11 +52,14 @@
     <ClCompile Include="USBGamePad.cpp">
       <Filter>Source\lib\GamePad</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source\ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelData.cpp">
+      <Filter>Source\ModelData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Model.h">
-      <Filter>Source\Model</Filter>
-    </ClInclude>
     <ClInclude Include="Testiger.h">
       <Filter>Source\Model</Filter>
     </ClInclude>
@@ -92,6 +95,12 @@
     </ClInclude>
     <ClInclude Include="InputKey.h">
       <Filter>Source\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source\ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelData.h">
+      <Filter>Source\ModelData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

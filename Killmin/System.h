@@ -8,13 +8,15 @@
 #pragma comment(lib, "winmm.lib")
 
 /*	☆ D3DXってのがまどろっこしい ☆	*/
+#define Vec2 D3DXVECTOR2  //入力がめんどい
 #define Vec3 D3DXVECTOR3  //打つのめんどい
 #define Vec4 D3DXVECTOR4  //うつのめんどい
 #define Matrix D3DXMATRIX //宇津のめんこい
 #define onKey GetAsyncKeyState  //どっこい
-#define onJoyKey Input::joypadKeyDown	//はつこい
+#define onJoyKey Input::joypadKeyDown //い
 #define or ||					//ひよこい
 #define constatic const static	//ひまこい
+#define vUp Vec3(0.0f, 1.0f, 0.0f)	//こい
 /*	-	-	なんたらデバイス	-	-	*/
 extern LPDIRECT3D9             g_pD3D;
 extern LPDIRECT3DDEVICE9       g_pd3dDevice;

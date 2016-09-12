@@ -85,6 +85,7 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelData.cpp" />
     <ClCompile Include="Pikumin.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="System.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="D3dxFormula.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="InputKey.h" />
+    <ClInclude Include="ModelData.h" />
     <ClInclude Include="PadCode.h" />
     <ClInclude Include="USBGamePad.h" />
     <ClInclude Include="Pikumin.h" />
