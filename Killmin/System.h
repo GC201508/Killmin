@@ -15,6 +15,7 @@
 #define onKey GetAsyncKeyState  //どっこい
 #define onJoyKey Input::joypadKeyDown //い
 #define or ||					//ひよこい
+#define and &&					//ひなこい
 #define constatic const static	//ひまこい
 #define vUp Vec3(0.0f, 1.0f, 0.0f)	//こい
 /*	-	-	なんたらデバイス	-	-	*/

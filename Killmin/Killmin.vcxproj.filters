@@ -58,6 +58,9 @@
     <ClCompile Include="ModelData.cpp">
       <Filter>Source\ModelData</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source\ModelData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Testiger.h">
@@ -100,6 +103,9 @@
       <Filter>Source\ModelData</Filter>
     </ClInclude>
     <ClInclude Include="ModelData.h">
+      <Filter>Source\ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
       <Filter>Source\ModelData</Filter>
     </ClInclude>
   </ItemGroup>

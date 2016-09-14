@@ -1,6 +1,6 @@
 #pragma once
 /*	-	-	-	-	-	-	-	-	-	-	-	*/
-//ベクトルと行列とかの計算が面倒くさいんでまとめますよｫｫｩｰｰ!!!
+//ベクトルと行列とかの計算が面倒くさいんでまとめますよ
 /*	-	-	-	-	-	-	-	-	-	-	-	*/
 #include "System.h"
 class dxFor
@@ -26,4 +26,5 @@ public:
 
 	//X軸Z軸の向き
 	typedef struct xzDir{ float x = 0; float z = 0; };
+
 };
