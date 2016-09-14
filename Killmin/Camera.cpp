@@ -119,9 +119,8 @@ void Camera::KaitenCamera()
 	Matrix mRot;
 	Vec3 toPos;
 	D3DXVec3Subtract(&toPos, &vEyePt, &vLookatPt);
-	Vec3 vUP(0.0f, 1.0f, 0.0f);
 	Vec3 vAxis;
-	D3DXVec3Cross(&vAxis, &vUP, &toPos);
+	D3DXVec3Cross(&vAxis, &vUp, &toPos);
 	dxFor::Vec3Normalize(&vAxis);
 	float spd = CamRotSpd;
 	dxFor::xzDir Dir;
@@ -155,7 +154,6 @@ void Camera::MoveCamera()
 /*íçéãì_Ç∆ÉJÉÅÉâÇÃà íuÇìØéûÇ…ìÆÇ©Ç∑*/
 
 	Vec3 toPos;
-	Vec3 vUP(0.0f, 1.0f, 0.0f);
 	float spd = CamMoveSpd;
 	Vec3 dir(0.f,0.f,0.f);
 
@@ -164,7 +162,7 @@ void Camera::MoveCamera()
 		if (onKey(MoveRIGHT)){ dir.x--; }
 		else if (onKey(MoveLEFT)){ dir.x++; }
 		D3DXVec3Subtract(&toPos, &vEyePt, &vLookatPt);
-		D3DXVec3Cross(&toPos, &vUP, &toPos);
+		D3DXVec3Cross(&toPos, &vUp, &toPos);
 		dxFor::Vec3Normalize(&toPos);
 		vLookatPt += toPos * spd * dir.x;
 		vEyePt += toPos * spd * dir.x;

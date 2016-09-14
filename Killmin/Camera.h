@@ -13,6 +13,12 @@ private:
 	float					Far;				//!<遠平面。
 	float					Near;				//!<近平面。
 	float					aspect;				//!<アスペクト比
+
+	/*	-	-	-	-	-	-	-	-	-	-	-	*/
+	//TODO:ここからZ.Takemasaの処理					//
+	void KaitenCamera();
+	void MoveCamera();
+	/*	-	-	-	-	-	-	-	-	-	-	-	*/
 public:
 	/*!
 	*@brief	コンストラクタ。
@@ -94,9 +100,5 @@ public:
 	*@brief	カメラの初期化。
 	*/
 	void Init();
-/*	-	-	-	-	-	-	-	-	-	-	-	*/
-//TODO:ここからZ.Takemasaの処理					//
-	void KaitenCamera();
-	void MoveCamera();
-/*	-	-	-	-	-	-	-	-	-	-	-	*/
+
 };
