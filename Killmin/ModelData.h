@@ -22,7 +22,7 @@ struct D3DXMESHCONTAINER_DERIVED : public D3DXMESHCONTAINER
 	DWORD NumInfl;
 	LPD3DXBUFFER pBoneCombinationBuf;
 	Matrix** ppBoneMatrixPtrs;
-	Matrix* ppBoneOffsetMatrices;
+	Matrix* pBoneOffsetMatrices;
 	DWORD NumPaletteEntries;
 	bool UseSoftwareVP;
 	DWORD iAttributeSW;
