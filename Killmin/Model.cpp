@@ -12,7 +12,7 @@ Model::Model()
 	position.x = 0.0f;
 	position.y = 0.0f;
 	position.z = 0.0f;
-	angle = 0.0f;
+	angle = D3DXToRadian(0.f);
 }
 
 Model::~Model()
@@ -23,7 +23,7 @@ Model::~Model()
 void Model::SetPosition(D3DXVECTOR3 pos)
 {
 	position = pos;
-}
+}			
 
 D3DXVECTOR3 Model::GetPosition()
 {

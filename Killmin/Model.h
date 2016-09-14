@@ -18,10 +18,11 @@ public:
 //set
 	void SetPosition(D3DXVECTOR3 pos);
 	void setWorld(Matrix wol){ mWorld = wol; }
-	//get
+//get
 	D3DXVECTOR3 GetPosition();
-	Vec3* getLpPos(){ return &position; }//posアドレスを返す
-	float* getLpAngle(){ return &angle; }//angleアドレス返せ
+
+	Vec3* lpPos = &position;//posアドレス
+	float* lpAngle = &angle;//angleアドレス
 protected:
 	//読み込むXファイル指定す
 	virtual LPCTSTR FileName() = 0;
