@@ -40,15 +40,16 @@ void Init()
 	ground.SetPosition(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	sonya.Init(g_pd3dDevice);
 	sonya.SetPosition(D3DXVECTOR3(-3.0f, 1.04f, 0.0f));
-	
+
 	//‚Õ‚ê‚¢‚âî•ñ’Ç‰Á
-	player.setModel(&tora);
+	player.setInit(&tora, &camera);
 
 	//‚Ò‚­‚İ‚ñî•ñ’Ç‰Á
 	//pikumin.setModel(&tora);
 
 	//‚©‚¦‚ç‚µ‚å‚«‚ 
 	camera.Init();
+
 }
 //-----------------------------------------------------------------------------
 // Name: •`‰æˆ—B
