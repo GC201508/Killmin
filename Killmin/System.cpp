@@ -2,6 +2,7 @@
 
 LPDIRECT3D9             g_pD3D = NULL;
 LPDIRECT3DDEVICE9       g_pd3dDevice = NULL;
+Effect*			g_effect = NULL;
 
 extern void Init();
 extern void Render();
@@ -12,6 +13,8 @@ extern void Terminate();
 //-----------------------------------------------------------------------------
 void InitD3D(HWND hWnd)
 {
+	
+	g_effect = new Effect;
 	//D3Dオブジェクトを作成する。
 	g_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 

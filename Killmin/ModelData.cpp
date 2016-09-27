@@ -401,7 +401,7 @@ namespace
 
 	//--------------------------------------------------------------------------------------
 	// Name: AllocateHierarchy::CreateFrame()
-	// Desc: 
+	// Desc: メッシュコンテナを作成しまぁーす。
 	//--------------------------------------------------------------------------------------
 	HRESULT AllocateHierarchy::CreateFrame(LPCSTR Name, LPD3DXFRAME* ppNewFrame)
 	{

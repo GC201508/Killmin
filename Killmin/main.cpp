@@ -1,6 +1,7 @@
 #include "System.h"
 #include "Camera.h"
 #include "Light.h"
+#include "InputKey.h"
 //使用モデル
 #include "Testiger.h"
 #include "Ground.h"
@@ -8,6 +9,11 @@
 //役割
 #include "Player.h"
 #include "Pikumin.h"
+//スキンモデル
+#include "SkinModel.h"
+#include "ModelData.h"
+#include "Animation.h"
+
 //-----------------------------------------------------------------------------
 // グローバル変数。
 //-----------------------------------------------------------------------------
@@ -25,6 +31,11 @@ Sonya sonya;//ソーニャちゃん
 Player player;//プレイヤー
 Pikumin pikumin;
 
+//スキンモデル
+SkinModel skinmodel;
+ModelData modeldata;
+Animation animation;
+
 //-----------------------------------------------------------------------------
 // Name: ゲームを初期化。
 //-----------------------------------------------------------------------------
@@ -37,7 +48,7 @@ void Init()
 	tora.Init(g_pd3dDevice);
 	tora.SetPosition(D3DXVECTOR3(0.5f, 0.77f, 0.0f));
 	ground.Init(g_pd3dDevice);
-	ground.SetPosition(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	ground.SetPosition(D3DXVECTOR3(0.0f, -3.5f, 0.0f));
 	sonya.Init(g_pd3dDevice);
 	sonya.SetPosition(D3DXVECTOR3(-3.0f, 1.04f, 0.0f));
 
@@ -49,6 +60,12 @@ void Init()
 
 	//かえらしょきあ
 	camera.Init();
+
+	//モデルロード
+	modeldata.LoadModelData("Assets/model/Unity.X", &animation);
+	skinmodel.Init(&modeldata);
+	skinmodel.SetLight(&light);
+	animation.PlayAnimation(0);
 
 }
 //-----------------------------------------------------------------------------
@@ -65,6 +82,9 @@ VOID Render()
 	tora.Render( g_pd3dDevice,camera,light); //とらちゃん
 	ground.Render(g_pd3dDevice, camera, light);//地面
 	sonya.Render(g_pd3dDevice, camera, light);//ソーニャちゃん
+
+
+	skinmodel.Draw(&camera.GetViewMatrix(), &camera.GetProjectionMatrix());
 	/*	-	-	-	-	-	-	-	-	*/
 	
 	// シーンの描画終了。
@@ -77,13 +97,23 @@ VOID Render()
 -----------------------------------------------------------------------------*/
 void Update()
 {
+	animation.Update(1.0f / 60.0f);//anime
+
 	light.Update(); //らいと
 	camera.Update();//かめら
 	tora.Update();//とらちゃん
 	sonya.Update();//そにゃちゃん
+	ground.Update();//じめん
 	
 	player.Update();//ぷれいや
 	pikumin.Update();//ぴくみん
+
+	if (InputKey::InputKeyCode(VK_SPACE))
+	{
+		animation.PlayAnimation(3);
+	}
+
+	skinmodel.UpdateWorldMatrix(D3DXVECTOR3(0.0f, 0.0f, 0.0f), D3DXQUATERNION(0.0f, 0.0f, 0.0f, 1.0f), D3DXVECTOR3(1.0f, 1.0f, 1.0f));
 }
 //-----------------------------------------------------------------------------
 //ゲームが終了するときに呼ばれる処理。

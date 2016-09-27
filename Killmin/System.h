@@ -21,6 +21,10 @@
 /*	-	-	なんたらデバイス	-	-	*/
 extern LPDIRECT3D9             g_pD3D;
 extern LPDIRECT3DDEVICE9       g_pd3dDevice;
+/*	-	-	えふぇくとまねじゃー	-	*/
+#include "Effect.h"
+class Effect;
+extern Effect*			g_effect;
 
 /*	-	いろいろ省いて楽したいがな	-	*/
 #include "D3dxFormula.h" //計算式

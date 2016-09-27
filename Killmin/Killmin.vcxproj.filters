@@ -52,14 +52,20 @@
     <ClCompile Include="USBGamePad.cpp">
       <Filter>Source\lib\GamePad</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source\ModelData</Filter>
-    </ClCompile>
     <ClCompile Include="ModelData.cpp">
       <Filter>Source\ModelData</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source\ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>Source\ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="SkinModel.cpp">
+      <Filter>Source\ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -99,14 +105,20 @@
     <ClInclude Include="InputKey.h">
       <Filter>Source\lib</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Source\ModelData</Filter>
-    </ClInclude>
     <ClInclude Include="ModelData.h">
       <Filter>Source\ModelData</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Source\ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>Source\ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="SkinModel.h">
+      <Filter>Source\ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Source\Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

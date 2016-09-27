@@ -8,5 +8,5 @@ public:
 	Tiger(){} //コンスト
 	~Tiger(){} //デスト
 
-	LPCTSTR FileName()override { return "Tiger.x"; }
+	LPCTSTR FileName()override { return "tiger.x"; }
 };

@@ -32,6 +32,7 @@ class Animation;
 
 class ModelData
 {
+public:
 	ModelData();  //‚±‚ñ‚·‚Æ
 	~ModelData();  //‚Å‚·‚Æ
 
