@@ -6,8 +6,10 @@
 Camera::Camera()
 {
 	Near = 0.1f;
-	Far = 100.0f;
+	Far = 1000.0f;
 	aspect = 1.8f;
+	camState = CS$HoldPlayer;
+	lpPlayerPos = nullptr;
 }
 //デストラクタ
 Camera::~Camera()
@@ -96,18 +98,31 @@ D3DXMATRIX Camera::GetProjectionMatrix()
 //カメラの更新処理。
 void Camera::Update()
 {
-	KaitenCamera();
-	MoveCamera();
+	
+	switch (camState)
+	{
+	case CS$Free:
+		KaitenCamera();
+		MoveCamera();
+		break;
+
+	case CS$HoldPlayer:
+		HoldPlayerCamera();
+		break;
+
+	default:
+		break;
+	}
 	D3DXMatrixLookAtLH(&viewMatrix, &vEyePt, &vLookatPt, &vUpVec);
 	D3DXMatrixPerspectiveFovLH(&projectionMatrix, D3DX_PI / 4, aspect, Near, Far);
 }
 //カメラの初期化。
 void Camera::Init()
 {
-	vEyePt = D3DXVECTOR3(0.0f, 2.0f, -10.0f);
+	//vEyePt = D3DXVECTOR3(0.0f, 2.0f, -10.0f);
+	vEyePt = D3DXVECTOR3(0.0f, 6.0f, -10.0f);
 	vLookatPt = D3DXVECTOR3(0.0f, -2.0f, 0.0f);
 	vUpVec = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-
 	Update();
 }
 const int RotLEFT = 188; //左回転 ＜キー
@@ -185,5 +200,26 @@ void Camera::MoveCamera()
 		else if (onKey(MoveDOWN)){ dir.y--; }
 		vLookatPt.y += spd * dir.y;
 		vEyePt.y += spd * dir.y;
+	}
+}
+
+void Camera::HoldPlayerCamera()
+{//常にプレイヤーを追尾するCAMERA
+	Vec3 Ppos = *lpPlayerPos; //Player位置
+	Vec3 subtPos;			//視点から離れた距離
+	
+	vLookatPt = Ppos; //Player位置に注視点を置き続ける
+	
+	D3DXVec3Subtract(&subtPos, &Ppos, &vEyePt);
+	subtPos.y = 0.f;
+	if (D3DXVec3Length(&subtPos) >= 10.f)
+	{
+		dxFor::Vec3Normalize(&subtPos);
+		vEyePt += subtPos;
+	}
+	else if (D3DXVec3Length(&subtPos) <= 5.f)
+	{
+		dxFor::Vec3Normalize(&subtPos);
+		vEyePt -= subtPos;
 	}
 }

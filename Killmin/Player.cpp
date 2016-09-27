@@ -28,6 +28,7 @@ void Player::Init()
 	}
 	else{
 		camToPosUpdate();
+		lpCam->setLpPlayerPos(lpModel->lpPos);
 	}
 }
 
@@ -38,7 +39,6 @@ void Player::Update()
 }
 void Player::camToPosUpdate()
 {//視点-注視点のベクトルを更新す
-
 	D3DXVec3Subtract(&camToPos, &lpCam->GetEyePt(), &lpCam->GetLookatPt());
 }
 const struct MOVE{
@@ -111,8 +111,8 @@ void Player::Move()
 	{
 		/* 進行方向を更新 */
 
-		direction = *addPos - LocalPos;	//移動後の位置 - 移動前の位置で進行方向を求める
-		D3DXVec3Normalize(&direction, &direction); //正規化す
+		D3DXVec3Subtract(&direction, addPos, &LocalPos);//移動後の位置 - 移動前の位置で進行方向を求める
+		dxFor::Vec3Normalize(&direction); //正規化す
 		float angle = 2 * fPI - atan2f(direction.z, direction.x);
 		*AngleY = angle - 0.5f * fPI;
 	}

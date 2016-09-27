@@ -4,6 +4,9 @@
 *@brief	カメラクラス。
 */
 class Camera {
+
+	enum CAMSTATE{ CS$Free = 0, CS$HoldPlayer }_CAMSTATE;
+
 private:
 	D3DXMATRIX				viewMatrix;			//!<ビュー行列。カメラ行列とも言う。
 	D3DXMATRIX				projectionMatrix;	//!<プロジェクション行列。ビュー空間から射影空間に変換する行列。
@@ -14,12 +17,22 @@ private:
 	float					Near;				//!<近平面。
 	float					aspect;				//!<アスペクト比
 
+	
+
 	/*	-	-	-	-	-	-	-	-	-	-	-	*/
 	//TODO:ここからZ.Takemasaの処理					//
 	void KaitenCamera();
+	void HoldPlayerCamera();
 	void MoveCamera();
-	/*	-	-	-	-	-	-	-	-	-	-	-	*/
+
+	CAMSTATE camState;
+	Vec3* lpPlayerPos; //プレイヤーのアドレスをsetして
 public:
+//set
+	void setCAMSTATE(CAMSTATE cs){ camState = cs; }
+	void setLpPlayerPos(Vec3* lp){ lpPlayerPos = lp; }
+	/*	-	-	-	-	-	-	-	-	-	-	-	*/
+
 	/*!
 	*@brief	コンストラクタ。
 	*/
@@ -100,5 +113,4 @@ public:
 	*@brief	カメラの初期化。
 	*/
 	void Init();
-
 };
