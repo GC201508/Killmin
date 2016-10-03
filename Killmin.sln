@@ -5,6 +5,30 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Killmin", "Killmin\Killmin.vcxproj", "{C19AB9C2-9357-42A8-83F5-17BE6442BD81}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{277CBBB2-2084-4DC1-8EC0-09E3D24E1363}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{B03B0CD3-84EA-4821-BBA1-BDF38E6F1AA8}"
+	ProjectSection(SolutionItems) = preProject
+		Killmin\Assets\model\ground.x = Killmin\Assets\model\ground.x
+		Killmin\Assets\model\sphere.X = Killmin\Assets\model\sphere.X
+		Killmin\Assets\model\tiger.x = Killmin\Assets\model\tiger.x
+		Killmin\Assets\model\TyokurituTiger.x = Killmin\Assets\model\TyokurituTiger.x
+		Killmin\Assets\model\Unity.X = Killmin\Assets\model\Unity.X
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shader", "Shader", "{D76AF67D-7B16-4AFD-899A-409570240A8B}"
+	ProjectSection(SolutionItems) = preProject
+		Killmin\Assets\Shader\basic.fx = Killmin\Assets\Shader\basic.fx
+		Killmin\Assets\Shader\LightingFunction.h = Killmin\Assets\Shader\LightingFunction.h
+		Killmin\Assets\Shader\Model.fx = Killmin\Assets\Shader\Model.fx
+		Killmin\Assets\Shader\sprite.fx = Killmin\Assets\Shader\sprite.fx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sn", "sn", "{6C61D6E6-BD13-444C-974F-29C7F226CFC9}"
+	ProjectSection(SolutionItems) = preProject
+		Killmin\Assets\model\sn\ソーニャ.x = Killmin\Assets\model\sn\ソーニャ.x
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -18,5 +42,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B03B0CD3-84EA-4821-BBA1-BDF38E6F1AA8} = {277CBBB2-2084-4DC1-8EC0-09E3D24E1363}
+		{D76AF67D-7B16-4AFD-899A-409570240A8B} = {277CBBB2-2084-4DC1-8EC0-09E3D24E1363}
+		{6C61D6E6-BD13-444C-974F-29C7F226CFC9} = {B03B0CD3-84EA-4821-BBA1-BDF38E6F1AA8}
 	EndGlobalSection
 EndGlobal

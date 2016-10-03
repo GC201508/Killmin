@@ -62,26 +62,26 @@ void Player::Move()
 
 	/*	横移動	*/
 
-	if (Input.InputKeyCode(MOVE::kRIGHT) or
-		Input.InputKeyCode(MOVE::jRIGHT))
+	if (Input.InputHoldCode(MOVE::kRIGHT) or
+		Input.InputHoldCode(MOVE::jRIGHT))
 	{
 		dir.x--;
 	}
-	else if (Input.InputKeyCode(MOVE::kLEFT) or
-		Input.InputKeyCode(MOVE::jLEFT))
+	else if (Input.InputHoldCode(MOVE::kLEFT) or
+		Input.InputHoldCode(MOVE::jLEFT))
 	{
 		dir.x++;
 	}
 
 	/*　縦移動　*/
 
-	if (Input.InputKeyCode(MOVE::kADVANCE) or
-		Input.InputKeyCode(MOVE::jADVANCE))
+	if (Input.InputHoldCode(MOVE::kADVANCE) or
+		Input.InputHoldCode(MOVE::jADVANCE))
 	{
 		dir.z--;
 	}
-	else if (Input.InputKeyCode(MOVE::kBACK) or
-		Input.InputKeyCode(MOVE::jBACK))
+	else if (Input.InputHoldCode(MOVE::kBACK) or
+		Input.InputHoldCode(MOVE::jBACK))
 	{
 		dir.z++;
 	}
@@ -90,13 +90,15 @@ void Player::Move()
 	/* 入力成立 */
 
 	bool isMove = false;
+	short ksk = 1.f;
+	if (onKey('F')){ ksk = 10.0f; }
 	
 	if (dir.x != 0)
 	{
 		Vec3 moveX;
 		D3DXVec3Cross(&moveX, &vUp, &camToPos);
 		dxFor::Vec3Normalize(&moveX);
-		D3DXVec3Add(addPos, addPos, &(moveX * spd * dir.x));
+		D3DXVec3Add(addPos, addPos, &(moveX * spd * dir.x * ksk));
 		isMove = true;
 	}
 	if (dir.z != 0)
@@ -104,7 +106,7 @@ void Player::Move()
 		Vec3 moveZ = camToPos;
 		moveZ.y = 0.f;
 		dxFor::Vec3Normalize(&moveZ);
-		D3DXVec3Add(addPos, addPos, &(moveZ * spd * dir.z));
+		D3DXVec3Add(addPos, addPos, &(moveZ * spd * dir.z * ksk));
 		isMove = true;
 	}
 	if (isMove)
@@ -114,6 +116,12 @@ void Player::Move()
 		D3DXVec3Subtract(&direction, addPos, &LocalPos);//移動後の位置 - 移動前の位置で進行方向を求める
 		dxFor::Vec3Normalize(&direction); //正規化す
 		float angle = 2 * fPI - atan2f(direction.z, direction.x);
-		*AngleY = angle - 0.5f * fPI;
+
+		if (onKey('F')){ *AngleY += 0.7f; }
+		else
+		{
+			*AngleY = angle - 0.5f * fPI;
+		}
+		
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "System.h"
+#include "InputKey.h"
 /*!
 *@brief	カメラクラス。
 */
@@ -27,6 +28,8 @@ private:
 
 	CAMSTATE camState;
 	Vec3* lpPlayerPos; //プレイヤーのアドレスをsetして
+	Vec3 toPos;
+	InputKey Input;
 public:
 //set
 	void setCAMSTATE(CAMSTATE cs){ camState = cs; }

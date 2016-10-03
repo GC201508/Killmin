@@ -17,6 +17,8 @@ public:
 	void setInit(Model* lpM = nullptr, Camera* lpC = nullptr){ lpModel = lpM; lpCam = lpC; Init(); }
 	void setModel(Model* lp){ lpModel = lp; Init(); }
 	void setCam(Camera* lp){ lpCam = lp; Init(); }
+//get
+	Model* getLpPlayerModel(){ return lpModel; }
 	
 private:
 

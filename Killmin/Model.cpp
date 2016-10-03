@@ -65,7 +65,7 @@ void Model::Init(LPDIRECT3DDEVICE9 pd3dDevice)
 	//シェーダーをパイルバンカー
 	HRESULT hr = D3DXCreateEffectFromFile(
 		pd3dDevice,
-		"basic.fx",
+		"Assets/Shader/basic.fx",
 		NULL,
 		NULL,
 		D3DXSHADER_SKIPVALIDATION,
@@ -93,7 +93,7 @@ void Model::Update()
 //描画
 void Model::Render(LPDIRECT3DDEVICE9 pd3dDevice,Camera camera,Light light)
 {
-	effect->SetTechnique("さといも"); //アクティブなテクニックを設定する。
+	effect->SetTechnique("さといも,"); //アクティブなテクニックを設定する。
 	effect->Begin(NULL, D3DXFX_DONOTSAVESHADERSTATE); //テクニックの適用を開始する。
 	effect->BeginPass(0); //アクティブなテクニック内で、パスを開始します。
 
@@ -109,10 +109,12 @@ void Model::Render(LPDIRECT3DDEVICE9 pd3dDevice,Camera camera,Light light)
 	effect->SetMatrix("g_rotationMatrix", &mRotation);//回転行列を転送
 
 	//->SetVectorArray　ベクトルの配列を設定する
+	effect->SetVectorArray("g_diffuseLightDirection", light.getDiffuseLDir(), light.getLNum());//ライトの方向を転送
 	effect->SetVectorArray("g_diffuseLightColor", light.getDiffuseLColor(), light.getLNum()); //ライトのカラーを転送
 
 	//->SetVector　ベクトルを設定する
 	effect->SetVector("g_ambientLight", &light.getAmbientL()); //環境光を設定
+	effect->SetVector("vEyePt", &Vec4(camera.GetEyePt()));
 
 	//->CommitChanges　アクティブなパス内で生じるステート変化をレンダリングの前にデバイスに伝えるそうです。　・・・どゆ意味？
 	effect->CommitChanges(); //データの転送が確定する。 描画を行う前に一度だけ呼び出す

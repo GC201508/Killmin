@@ -201,7 +201,7 @@ void SkinModel::UpdateWorldMatrix(const D3DXVECTOR3& trans, const D3DXQUATERNION
 {
 	D3DXMATRIX mTrans, mScale;
 	D3DXMatrixScaling(&mScale, scale.x, scale.y, scale.z);
-	D3DXMatrixTranslation(&mTrans, trans.x, trans.y, trans.z);
+	D3DXMatrixTranslation(&mTrans, trans.x + -5.0f, trans.y, trans.z);
 	D3DXMatrixRotationQuaternion(&rotationMatrix, &rot);
 
 	worldMatrix = mScale * rotationMatrix * mTrans;

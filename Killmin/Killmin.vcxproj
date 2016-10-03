@@ -91,6 +91,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="SkinModel.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
+    <ClCompile Include="ShadowMap.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="USBGamePad.cpp" />
   </ItemGroup>
@@ -98,8 +101,10 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="D3dxFormula.h" />
     <ClInclude Include="Effect.h" />
-    <ClInclude Include="Ground.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="ShadowMap.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="InputKey.h" />
     <ClInclude Include="ModelData.h" />
     <ClInclude Include="PadCode.h" />
@@ -109,9 +114,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="Sonya.h" />
     <ClInclude Include="System.h" />
-    <ClInclude Include="Testiger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

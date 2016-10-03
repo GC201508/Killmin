@@ -4,7 +4,6 @@
 */
 #include "System.h"
 class Model;
-class Player;
 class Pikumin
 {
 public:
@@ -13,14 +12,17 @@ public:
 
 	void Init();
 	void Update();
-	void StaringPlayer();
+	
+	void StaringPlayers();
+	void StalkingPlayers();
 //set
 	void setModel(Model* lp){ lpModel = lp; }
-//	void setPlayer(Player* lp){ *lpPlayerPos = lp->getPlayerPos(); }
+	void setLPPlayerPos(Vec3* lp){ lpPlayerPos = lp; LocalPlayerPos = *lpPlayerPos; }
 private:
 	Model* lpModel;
-	Vec3 addPos;
+	Vec3* addPos;
 	Vec3* lpPlayerPos;
-	D3DXMATRIX Rot;            // 板の回転行列
-	D3DXMATRIX Offset;         // 板のオフセット行列
+	float* AngleY;
+	Vec3 LocalPlayerPos;
+	D3DXVECTOR3 direction;
 };

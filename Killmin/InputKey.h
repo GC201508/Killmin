@@ -7,7 +7,30 @@
 
 class InputKey
 {
+private:
+	bool isHoldCode = false; //“¯‚¶Code‚ª“ü—Í‚³‚ê‘±‚¯‚Ä‚éAtrue‚É‚È‚êB
 public:
-	static bool InputKeyCode(int n){ return (onKey(n) != 0); }	//int VK_
-	static bool InputKeyCode(JoypadCode n){ return (onJoyKey(n) != 0); }//JoypadCode PAD_INPUT_
+	static bool InputHoldCode(int n){ return (onKey(n) != 0); }	//int VK_
+	static bool InputHoldCode(JoypadCode n){ return (onJoyKey(n) != 0); }//JoypadCode PAD_INPUT_
+
+	bool InputPushCode(int n)
+	{ 
+		if (onKey(n))
+		{
+			//’¼‘O‚Ü‚Å‰½‚à‰Ÿ‚³‚ê‚Ä‚È‚©‚Á‚½
+			if (!isHoldCode)
+			{
+				isHoldCode = true;
+				return true;
+			}
+
+			//Šù‚É‰Ÿ‚³‚ê‚Ä‚¢‚½
+			else if (isHoldCode)
+			{
+				return false;
+			}
+		}
+		isHoldCode = false;
+		return false;
+	}
 };
