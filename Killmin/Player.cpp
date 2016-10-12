@@ -5,10 +5,10 @@
 #define PLAYER_SPEED 0.03f
 Player::Player()
 {//初期化行う
-	lpModel = nullptr;
-	lpCam = nullptr;
-	addPos = nullptr;
-	AngleY = nullptr;
+	lpModel   = nullptr;
+	lpCam     = nullptr;
+	addPos    = nullptr;
+	AngleY    = nullptr;
 	direction = Vec3(0.f, 0.f, 0.f);
 }
 Player::~Player(){}
@@ -42,15 +42,15 @@ void Player::camToPosUpdate()
 	D3DXVec3Subtract(&camToPos, &lpCam->GetEyePt(), &lpCam->GetLookatPt());
 }
 const struct MOVE{
-	constatic int kRIGHT = VK_RIGHT;
-	constatic int kLEFT = VK_LEFT;
+	constatic int kRIGHT   = VK_RIGHT;
+	constatic int kLEFT    = VK_LEFT;
 	constatic int kADVANCE = VK_UP;
-	constatic int kBACK = VK_DOWN;
+	constatic int kBACK    = VK_DOWN;
 
-	constatic JoypadCode jRIGHT = PAD_INPUT_RIGHT;
-	constatic JoypadCode jLEFT = PAD_INPUT_LEFT;
+	constatic JoypadCode jRIGHT   = PAD_INPUT_RIGHT;
+	constatic JoypadCode jLEFT    = PAD_INPUT_LEFT;
 	constatic JoypadCode jADVANCE = PAD_INPUT_UP;
-	constatic JoypadCode jBACK = PAD_INPUT_DOWN;
+	constatic JoypadCode jBACK    = PAD_INPUT_DOWN;
 };
 const float fPI = 3.14159265358979323846264338327950288; //バタースコッチシナモンﾊﾟｲﾊﾟｲﾊﾟｰｲﾊﾟﾊﾟｲﾆ"ﾁｰﾁｯﾁｯﾁｯﾁｯﾁｯﾁｯﾁｯｽﾞｵｫ
 void Player::Move()
@@ -59,6 +59,7 @@ void Player::Move()
 	dxFor::xzDir dir;
 	InputKey Input;
 	Vec3 LocalPos = *addPos;
+
 
 	/*	横移動	*/
 
@@ -72,6 +73,7 @@ void Player::Move()
 	{
 		dir.x++;
 	}
+	
 
 	/*　縦移動　*/
 

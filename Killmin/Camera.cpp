@@ -5,10 +5,10 @@
 //コンストラクタ。
 Camera::Camera()
 {
-	Near = 0.1f;
-	Far = 1000.0f;
-	aspect = 1.8f;
-	camState = CS$HoldPlayer;
+	Near        = 0.1f;
+	Far         = 1000.0f;
+	aspect      = 1.8f;
+	camState    = CS$HoldPlayer;
 	lpPlayerPos = nullptr;
 }
 //デストラクタ
@@ -160,12 +160,12 @@ void Camera::KaitenCamera()
 		D3DXVec3Add(&vEyePt, &vLookatPt, &toPos);
 	}
 }
-const int MoveLEFT = 'A';
-const int MoveRIGHT = 'D';
+const int MoveLEFT    = 'A';
+const int MoveRIGHT   = 'D';
 const int MoveADVANCE = 'W';
-const int MoveBACK = 'S';
-const int MoveUP = VK_SPACE;
-const int MoveDOWN = VK_LSHIFT;
+const int MoveBACK    = 'S';
+const int MoveUP      = VK_SPACE;
+const int MoveDOWN    = VK_LSHIFT;
 void Camera::MoveCamera()
 {//カメラ動かせ動かせ
 /*注視点とカメラの位置を同時に動かす*/
@@ -192,7 +192,7 @@ void Camera::MoveCamera()
 		ToPos.y = 0.f;
 		dxFor::Vec3Normalize(&ToPos);
 		vLookatPt += ToPos * spd * dir.z;
-		vEyePt += ToPos * spd * dir.z;
+		vEyePt    += ToPos * spd * dir.z;
 	}
 
 	if (onKey(MoveUP) or onKey(MoveDOWN))
@@ -200,7 +200,7 @@ void Camera::MoveCamera()
 		if (onKey(MoveUP)){ dir.y++; }
 		else if (onKey(MoveDOWN)){ dir.y--; }
 		vLookatPt.y += spd * dir.y;
-		vEyePt.y += spd * dir.y;
+		vEyePt.y    += spd * dir.y;
 	}
 }
 
@@ -208,5 +208,5 @@ void Camera::HoldPlayerCamera()
 {//常にプレイヤーを追尾するCAMERA
 
 	vLookatPt = *lpPlayerPos; //Player位置に注視点を置き続ける
-	vEyePt = vLookatPt + toPos;
+	vEyePt    = vLookatPt + toPos;
 }

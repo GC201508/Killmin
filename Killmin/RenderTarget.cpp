@@ -2,16 +2,14 @@
 
 RenderTarget::RenderTarget()
 {
-	depthSurface = NULL;
-	texture = NULL;
-	surface = NULL;
-	texture = NULL;
-
+	depthSurface   = NULL;
+	texture        = NULL;
+	surface        = NULL;
+	texture        = NULL;
 	dwNumMaterials = 0L;
-	pMeshTextures = NULL;
-	pMesh = NULL;
-
-	pTigerEffect = NULL;
+	pMeshTextures  = NULL;
+	pMesh          = NULL;
+	pTigerEffect   = NULL;
 }
 
 RenderTarget::~RenderTarget()

@@ -5,31 +5,40 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source\Player">
-      <UniqueIdentifier>{7f485401-50a9-4f65-be4c-5a63264188a4}</UniqueIdentifier>
+    <Filter Include="Source\INPUT_CODE">
+      <UniqueIdentifier>{8976d82a-fa7c-4c27-9214-59566a1f3f6e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Model">
-      <UniqueIdentifier>{4881dba2-2212-4b9a-8cf1-8b58a63648f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\lib">
-      <UniqueIdentifier>{416d132e-a160-46dc-a77c-88db44190083}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Pikumin">
-      <UniqueIdentifier>{9d31983d-8e46-474d-ae61-e773f2947630}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Camera">
-      <UniqueIdentifier>{f37bb03a-f7be-46b0-97f1-0d3a0b288034}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Light">
-      <UniqueIdentifier>{2bef6273-0f60-4a9b-ae17-a4ab1d4c23a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\lib\GamePad">
+    <Filter Include="Source\INPUT_CODE\USBGamePad">
       <UniqueIdentifier>{40f1dc72-8815-426d-9c9d-392e170ee73c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\ModelData">
+    <Filter Include="Source\INPUT_CODE\XInput">
+      <UniqueIdentifier>{e4049092-9526-42ca-ba09-6dd875489b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\MODEL_DATA">
       <UniqueIdentifier>{063ff54d-01ad-4fed-b710-c3198811c39c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\RenderTarget">
+    <Filter Include="Source\MODEL">
+      <UniqueIdentifier>{4881dba2-2212-4b9a-8cf1-8b58a63648f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\LIGHT">
+      <UniqueIdentifier>{2bef6273-0f60-4a9b-ae17-a4ab1d4c23a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\CAMERA">
+      <UniqueIdentifier>{f37bb03a-f7be-46b0-97f1-0d3a0b288034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\_lib">
+      <UniqueIdentifier>{416d132e-a160-46dc-a77c-88db44190083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\_lib\Debug">
+      <UniqueIdentifier>{330530e4-10f7-43b4-9685-ca318ec28beb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\PIKUMIN">
+      <UniqueIdentifier>{9d31983d-8e46-474d-ae61-e773f2947630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\PLAYER">
+      <UniqueIdentifier>{7f485401-50a9-4f65-be4c-5a63264188a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\RENDER_TARGET">
       <UniqueIdentifier>{5d9a29f7-c66e-4602-9d23-854d96c883b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -38,99 +47,105 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source\Player</Filter>
+      <Filter>Source\PLAYER</Filter>
     </ClCompile>
     <ClCompile Include="System.cpp">
-      <Filter>Source\lib</Filter>
+      <Filter>Source\_lib</Filter>
     </ClCompile>
     <ClCompile Include="Pikumin.cpp">
-      <Filter>Source\Pikumin</Filter>
+      <Filter>Source\PIKUMIN</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source\Camera</Filter>
+      <Filter>Source\CAMERA</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
-      <Filter>Source\Light</Filter>
-    </ClCompile>
-    <ClCompile Include="USBGamePad.cpp">
-      <Filter>Source\lib\GamePad</Filter>
+      <Filter>Source\LIGHT</Filter>
     </ClCompile>
     <ClCompile Include="ModelData.cpp">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClCompile>
     <ClCompile Include="Effect.cpp">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClCompile>
     <ClCompile Include="SkinModel.cpp">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
-      <Filter>Source\Model</Filter>
+      <Filter>Source\MODEL</Filter>
     </ClCompile>
     <ClCompile Include="RenderTarget.cpp">
-      <Filter>Source\RenderTarget</Filter>
+      <Filter>Source\RENDER_TARGET</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Source\RenderTarget</Filter>
+      <Filter>Source\RENDER_TARGET</Filter>
     </ClCompile>
-    <ClCompile Include="ShadowMap.cpp">
-      <Filter>Source\Camera</Filter>
+    <ClCompile Include="DebugFont.cpp">
+      <Filter>Source\_lib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="USBGamePad.cpp">
+      <Filter>Source\INPUT_CODE\USBGamePad</Filter>
+    </ClCompile>
+    <ClCompile Include="XInputMode.cpp">
+      <Filter>Source\INPUT_CODE\XInput</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
-      <Filter>Source\Player</Filter>
+      <Filter>Source\PLAYER</Filter>
     </ClInclude>
     <ClInclude Include="System.h">
-      <Filter>Source\lib</Filter>
+      <Filter>Source\_lib</Filter>
     </ClInclude>
     <ClInclude Include="D3dxFormula.h">
-      <Filter>Source\lib</Filter>
+      <Filter>Source\_lib</Filter>
     </ClInclude>
     <ClInclude Include="Pikumin.h">
-      <Filter>Source\Pikumin</Filter>
+      <Filter>Source\PIKUMIN</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Source\Camera</Filter>
+      <Filter>Source\CAMERA</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
-      <Filter>Source\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="USBGamePad.h">
-      <Filter>Source\lib\GamePad</Filter>
+      <Filter>Source\LIGHT</Filter>
     </ClInclude>
     <ClInclude Include="PadCode.h">
-      <Filter>Source\lib\GamePad</Filter>
-    </ClInclude>
-    <ClInclude Include="InputKey.h">
-      <Filter>Source\lib</Filter>
+      <Filter>Source\INPUT_CODE\USBGamePad</Filter>
     </ClInclude>
     <ClInclude Include="ModelData.h">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClInclude>
     <ClInclude Include="Effect.h">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClInclude>
     <ClInclude Include="SkinModel.h">
-      <Filter>Source\ModelData</Filter>
+      <Filter>Source\MODEL_DATA</Filter>
     </ClInclude>
     <ClInclude Include="Model.h">
-      <Filter>Source\Model</Filter>
+      <Filter>Source\MODEL</Filter>
     </ClInclude>
     <ClInclude Include="RenderTarget.h">
-      <Filter>Source\RenderTarget</Filter>
+      <Filter>Source\RENDER_TARGET</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Source\RenderTarget</Filter>
+      <Filter>Source\RENDER_TARGET</Filter>
     </ClInclude>
-    <ClInclude Include="ShadowMap.h">
-      <Filter>Source\Camera</Filter>
+    <ClInclude Include="DebugFont.h">
+      <Filter>Source\_lib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="USBGamePad.h">
+      <Filter>Source\INPUT_CODE\USBGamePad</Filter>
+    </ClInclude>
+    <ClInclude Include="XInputMode.h">
+      <Filter>Source\INPUT_CODE\XInput</Filter>
+    </ClInclude>
+    <ClInclude Include="InputKey.h">
+      <Filter>Source\INPUT_CODE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

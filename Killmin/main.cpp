@@ -16,6 +16,12 @@
 #include "ModelData.h"
 #include "Animation.h"
 
+#if debuGmodE
+//デバッグ
+#include "DebugFont.h"
+DebugFont Dfont;
+#endif //_debuGmodE
+
 //-----------------------------------------------------------------------------
 // グローバル変数。
 //-----------------------------------------------------------------------------
@@ -98,19 +104,34 @@ void Init()
 	skinmodel.SetLight(&light);
 	animation.PlayAnimation(0);
 
+#if debuGmodE
+	//フォント初期化
+	Dfont.Init(g_pd3dDevice);
+#endif //__debuGmodE
+
 }
+//TODO:時間
+CStopwatch sw;
 //-----------------------------------------------------------------------------
 // Name: 描画処理。
 //-----------------------------------------------------------------------------
 VOID Render()
 {
+	double time = sw.GetElapsed();
+
+
+	//シーンの描画開始。
+	g_pd3dDevice->BeginScene();	
+
 	// Turn on the zbuffer
 	g_pd3dDevice->SetRenderState(D3DRS_ZENABLE, TRUE);
 
 	// 画面をクリア。
 	g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
-	//シーンの描画開始。
-	g_pd3dDevice->BeginScene();	
+#if debuGmodE
+
+	Dfont.Render(time);
+#endif
 
 	/*	-	-	-	-	-	-	-	-	*/
 	tora.Render( g_pd3dDevice,camera,light); //とらちゃん,
@@ -133,14 +154,22 @@ VOID Render()
 
 	// シーンの描画終了。
 	g_pd3dDevice->EndScene();
+
+
 	// バックバッファとフロントバッファを入れ替える。
 	g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
+#if debuGmodE
+	//デバッグテキスト表示
+	sw.Stop();
+#endif //_debuGmodE
+
 }
 /*!-----------------------------------------------------------------------------
 *@brief	更新処理。
 -----------------------------------------------------------------------------*/
 void Update()
 {
+	sw.Start();
 	animation.Update(1.0f / 60.0f);//anime
 
 	light.Update(); //らいと

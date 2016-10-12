@@ -6,6 +6,8 @@
 #pragma warning( default : 4996 )
 #include <cstdlib>
 #pragma comment(lib, "winmm.lib")
+#define _CRT_SECURE_NO_WARNINGS_
+
 
 /*	☆ D3DXってのがまどろっこしい ☆	*/
 #define Vec2 D3DXVECTOR2  //入力がめんどい
@@ -30,4 +32,4 @@ extern Effect*			g_effect;
 #include "D3dxFormula.h" //計算式
 
 /*	-	-	デバックUIの表示	-	-	*/
-const int debuGmodE = 0; //[ON=1][OFF=0]
+#define debuGmodE 1; //[ON=1][OFF=0]

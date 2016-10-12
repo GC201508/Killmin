@@ -3,16 +3,16 @@
 #include "Camera.h"
 Model::Model()
 {
-	mesh = NULL;
-	textures = NULL;
+	mesh        = NULL;
+	textures    = NULL;
 	numMaterial = 0;
-	effect = NULL;
+	effect      = NULL;
+	position.x  = 0.0f;
+	position.y  = 0.0f;
+	position.z  = 0.0f;
+	angle       = D3DXToRadian(0.f);
 	D3DXMatrixIdentity(&mWorld);	//単位行列を作成
 	D3DXMatrixIdentity(&mRotation); //単位行列を作成
-	position.x = 0.0f;
-	position.y = 0.0f;
-	position.z = 0.0f;
-	angle = D3DXToRadian(0.f);
 }
 
 Model::~Model()
