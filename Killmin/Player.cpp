@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Model.h"
 #include "Camera.h"
-#include "InputKey.h"
+//#include "InputKey.h"	//TODO:2016/10/13 XInput‚ğ“±“ü‚µ‚½‚Ì‚Åíœ
 #define PLAYER_SPEED 0.03f
 Player::Player()
 {//‰Šú‰»s‚¤
