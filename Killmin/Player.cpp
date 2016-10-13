@@ -55,9 +55,9 @@ const struct MOVE{
 const float fPI = 3.14159265358979323846264338327950288; //バタースコッチシナモンﾊﾟｲﾊﾟｲﾊﾟｰｲﾊﾟﾊﾟｲﾆ"ﾁｰﾁｯﾁｯﾁｯﾁｯﾁｯﾁｯﾁｯｽﾞｵｫ
 void Player::Move()
 {//プレイヤーを動かす
-	float spd = PLAYER_SPEED;
 	dxFor::xzDir dir;
 	InputKey Input;
+	float spd     = PLAYER_SPEED;
 	Vec3 LocalPos = *addPos;
 
 
@@ -69,7 +69,7 @@ void Player::Move()
 		dir.x--;
 	}
 	else if (Input.InputHoldCode(MOVE::kLEFT) or
-		Input.InputHoldCode(MOVE::jLEFT))
+		     Input.InputHoldCode(MOVE::jLEFT))
 	{
 		dir.x++;
 	}
@@ -83,7 +83,7 @@ void Player::Move()
 		dir.z--;
 	}
 	else if (Input.InputHoldCode(MOVE::kBACK) or
-		Input.InputHoldCode(MOVE::jBACK))
+		     Input.InputHoldCode(MOVE::jBACK))
 	{
 		dir.z++;
 	}
@@ -92,7 +92,7 @@ void Player::Move()
 	/* 入力成立 */
 
 	bool isMove = false;
-	short ksk = 1.f;
+	short ksk   = 1.f;
 	if (onKey('F')){ ksk = 10.0f; }
 	
 	if (dir.x != 0)
@@ -106,10 +106,11 @@ void Player::Move()
 	if (dir.z != 0)
 	{
 		Vec3 moveZ = camToPos;
-		moveZ.y = 0.f;
+		moveZ.y    = 0.f;
 		dxFor::Vec3Normalize(&moveZ);
 		D3DXVec3Add(addPos, addPos, &(moveZ * spd * dir.z * ksk));
 		isMove = true;
+
 	}
 	if (isMove)
 	{
