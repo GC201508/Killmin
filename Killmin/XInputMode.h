@@ -108,8 +108,8 @@ public:
 
 	// * @brief		スティックの軸の入力量を取得,
 	// * @return	[-1.0～1.0の正規化された値],
-		float LeftStickX()  const { return stick.LeftX;  }
-		float LeftStickY()  const { return stick.LeftY;  }
-		float RightStickX() const { return stick.RightX; }
-		float RightStickY() const { return stick.RightY; }
+		float getLeftStickX()  const { return stick.LeftX;  }
+		float getLeftStickY()  const { return stick.LeftY;  }
+		float getRightStickX() const { return stick.RightX; }
+		float getRightStickY() const { return stick.RightY; }
 };
