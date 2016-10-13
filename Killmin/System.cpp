@@ -1,8 +1,9 @@
 #include "System.h"
 
-LPDIRECT3D9             g_pD3D = NULL;
-LPDIRECT3DDEVICE9       g_pd3dDevice = NULL;
-Effect*			g_effect = NULL;
+LPDIRECT3D9             g_pD3D         = NULL;
+LPDIRECT3DDEVICE9       g_pd3dDevice   = NULL;
+Effect*			        g_effect       = NULL;
+XInputMode*				XInput         = NULL;
 
 extern void Init();
 extern void Render();
@@ -15,15 +16,17 @@ void InitD3D(HWND hWnd)
 {
 	
 	g_effect = new Effect;
+	XInput   = new XInputMode;
+
 	//D3Dオブジェクトを作成する。
 	g_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 
 	// D3Dデバイスを作成するためのパラメータを設定する。
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
-	d3dpp.Windowed = TRUE;
-	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+	d3dpp.Windowed               = TRUE;
+	d3dpp.SwapEffect             = D3DSWAPEFFECT_DISCARD;
+	d3dpp.BackBufferFormat       = D3DFMT_UNKNOWN;
 	d3dpp.EnableAutoDepthStencil = TRUE;
 	d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
 	//D3Dデバイスを作成する。
@@ -70,13 +73,13 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 	// ウィンドウを作成。
 	HWND hWnd = CreateWindow(
-		"Killmin", // 登録されているクラス名
-		"キルミンベイベー", // ウィンドウ名
-		WS_OVERLAPPEDWINDOW,// ウィンドウスタイル
-		300,// ウィンドウの横方向の位置	
-		100,// ウィンドウの縦方向の位置
-		960,// ウィンドウの幅
-		540,// ウィンドウの高さ
+		"Killmin"          , // 登録されているクラス名,
+		"キルミンベイベー" , // ウィンドウ名,
+		WS_OVERLAPPEDWINDOW, // ウィンドウスタイル,
+		300                , // ウィンドウの横方向の位置,	
+		100                , // ウィンドウの縦方向の位置,
+		WindowSizeX        , // ウィンドウの幅,
+		WindowSizeY        , // ウィンドウの高さ,
 		NULL, NULL, wc.hInstance, NULL);
 	// Direct3Dを初期化。
 	InitD3D(hWnd);
@@ -88,6 +91,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 
 	//ここからゲーム関係の初期化。
 	Init();
+	XInput->Init(0);
 
 	// ゲームループ
 	MSG msg;
@@ -100,6 +104,7 @@ INT WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, LPWSTR, INT)
 			DispatchMessage(&msg);
 		}
 		else {
+			XInput->Update();
 			Update();
 			Render();
 		}

@@ -11,52 +11,51 @@
 #include <XInput.h> // XInput API
 
 namespace {
-	/*
-		Noncopyポリシー
-	*/
+	/* Noncopyポリシー, */
 	struct Noncopyable{ 
-		Noncopyable() = default;
+		Noncopyable()                   = default;
 		Noncopyable(const Noncopyable&) = delete;
-		Noncopyable& operator=(const Noncopyable&) = delete;
+		Noncopyable& operator           =(const Noncopyable&) = delete;
 	};
 
 	enum EnButton{
-		enButtonUp,		//!<上。
-		enButtonDown,		//!<下。
-		enButtonLeft,		//!<左。
-		enButtonRight,		//!<右。
-		enButtonA,			//!<Aボタン。
-		enButtonB,			//!<Bボタン。
-		enButtonX,			//!<Xボタン。
-		enButtonY,			//!<Yボタン。
-		enButtonSelect,	//!<セレクトボタン。
-		enButtonStart,		//!<スタートボタン。
-		enButtonRB1,		//!<RB1ボタン。
-		enButtonRB2,		//!<RB2ボタン。
-		enButtonRB3,		//!<RB3ボタン。
-		enButtonLB1,		//!<LB1ボタン。
-		enButtonLB2,		//!<LB2ボタン。
-		enButtonLB3,		//!<LB3ボタン。
-		enButtonNum,	//!<ボタンの数。
+		enButtonUp    ,		    //!<上。
+		enButtonDown  ,		    //!<下。
+		enButtonLeft  ,		    //!<左。
+		enButtonRight ,		    //!<右。
+		enButtonA     ,			//!<Aボタン。
+		enButtonB     ,			//!<Bボタン。
+		enButtonX     ,			//!<Xボタン。
+		enButtonY     ,			//!<Yボタン。
+		enButtonSelect,	        //!<セレクトボタン。
+		enButtonStart ,		    //!<スタートボタン。
+		enButtonRB1   ,		    //!<RB1ボタン。
+		enButtonRB2   ,		    //!<RB2ボタン。
+		enButtonRB3   ,		    //!<RB3ボタン。
+		enButtonLB1   ,		    //!<LB1ボタン。
+		enButtonLB2   ,		    //!<LB2ボタン。
+		enButtonLB3   ,		    //!<LB3ボタン。
+		enButtonNum   ,	        //!<ボタンの数。
 	};
 }
+
 class XInputMode : Noncopyable
-{
-public:	struct PAD_STATE{
+{	
+	struct PAD_STATE{
 			XINPUT_STATE state;
 			bool bConnected;
-};
-private:
-	PAD_STATE state;	//!<パッドステート,
-	int padNo;			//!<パッド番号,
-	int trigger[enButtonNum];	//!<トリガー
-	int press[enButtonNum];
-	struct Stick{	//!<スティック
-		float LeftX;	//!< X軸の入力量（左スティック）
-		float LeftY;	//!< Y軸の入力量（左スティック）
-		float RightX;	//!< X軸の入力量（右スティック）
-		float RightY;	//!< Y軸の入力量（右スティック）
-	} static stick;
+	};
+	struct Stick{	            //!<スティック
+		float LeftX;	        //!< X軸の入力量（左スティック）
+		float LeftY;	        //!< Y軸の入力量（左スティック）
+		float RightX;	        //!< X軸の入力量（右スティック）
+		float RightY;	        //!< Y軸の入力量（右スティック）
+	}stick;
+
+	PAD_STATE state;	        //!<パッドステート,
+	int padNo;			        //!<パッド番号,
+	int trigger[enButtonNum];	//!<トリガー,
+	int press[enButtonNum];		//!<<press入力のフラグ,
 
 	// * @brief		スティック構造体を初期化,
 	void StickInit(){
@@ -77,6 +76,7 @@ private:
 
 	// * @brief		Xboxコン接続結果による処理
 	void XInputResultConnection();
+
 public:
 	XInputMode();
 	~XInputMode();
@@ -108,10 +108,8 @@ public:
 
 	// * @brief		スティックの軸の入力量を取得,
 	// * @return	[-1.0～1.0の正規化された値],
-	struct GET_STICK_F{
-		float LeftStickX()  const { return stick.LeftX; }
-		float LeftStickY()  const { return stick.LeftY; }
+		float LeftStickX()  const { return stick.LeftX;  }
+		float LeftStickY()  const { return stick.LeftY;  }
 		float RightStickX() const { return stick.RightX; }
 		float RightStickY() const { return stick.RightY; }
-	}GetSttickF;
 };

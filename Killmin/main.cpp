@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "Light.h"
 #include "InputKey.h"
+#include "XInputMode.h"
 //model
 #include "Model.h"
 
@@ -62,28 +63,29 @@ void Init()
 	light.Init();
 
 	//もでうしょきか,
-	tora.Init(g_pd3dDevice);
-	tora.SetPosition(D3DXVECTOR3(0.5f, 0.77f, 0.0f));
-	ground.Init(g_pd3dDevice);
-	ground.SetPosition(D3DXVECTOR3(0.0f, -3.5f, 0.0f));
-	sonya.Init(g_pd3dDevice);
-	sonya.SetPosition(D3DXVECTOR3(-3.0f, 1.04f, 0.0f));
+	tora     .Init(g_pd3dDevice);
+	ground   .Init(g_pd3dDevice);
+	sonya    .Init(g_pd3dDevice);
 	pikuTiger.Init(g_pd3dDevice);
-	pikuTiger.SetPosition(Vec3(0.f, 0.f, 10.f));
-	
-	testball.Init(g_pd3dDevice);
-	testball.SetPosition(Vec3(10.f, 20.f, 200.f));
+	testball .Init(g_pd3dDevice);
+
+
+	tora     .SetPosition(Vec3(0.5f , 0.77f, 0.0f ))  ;
+	ground   .SetPosition(Vec3(0.0f , -3.5f, 0.0f ))  ;
+	sonya    .SetPosition(Vec3(-3.0f, 1.04f, 0.0f ))  ;
+	pikuTiger.SetPosition(Vec3(0.f  , 0.f  , 10.f ))  ;
+	testball .SetPosition(Vec3(10.f , 20.f , 200.f))  ;
 
 	//オフスクリーン
 	sprite.Init(g_pd3dDevice);
 	renderTarget.Create(g_pd3dDevice,
-		400,//横幅,
-		400,//高さ,
-		1,	//レンダリングターゲットにはミップマップは不要なので一枚のみ。
-		D3DFMT_A8R8G8B8,	//カラーバッファのフォーマットはARGBの32bit
-		D3DFMT_D16,	//学生のＰＣで24bitの深度バッファを作成できなかったので、16ビットで深度バッファを作成する。
+		400,                    //横幅,
+		400,                    //高さ,
+		1,	                    //レンダリングターゲットにはミップマップは不要なので一枚のみ。
+		D3DFMT_A8R8G8B8,	    //カラーバッファのフォーマットはARGBの32bit
+		D3DFMT_D16,	            //学生のＰＣで24bitの深度バッファを作成できなかったので、16ビットで深度バッファを作成する。
 		D3DMULTISAMPLE_NONE,	//マルチサンプリングはなし。
-		0	//マルチサンプリングしないので０を指定。
+		0	                    //マルチサンプリングしないので０を指定。
 		);
 	renderTarget.InitGeometry(g_pd3dDevice);
 
@@ -128,38 +130,39 @@ VOID Render()
 
 	// 画面をクリア。
 	g_pd3dDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
-#if debuGmodE
 
+#if debuGmodE
+	//デバッグテキスト表示,
 	Dfont.Render(time);
 #endif
 
 	/*	-	-	-	-	-	-	-	-	*/
-	tora.Render( g_pd3dDevice,camera,light); //とらちゃん,
-	ground.Render(g_pd3dDevice, camera, light);//地面,
-	sonya.Render(g_pd3dDevice, camera, light);//ソーニャちゃん,
-	pikuTiger.Render(g_pd3dDevice, camera, light);//ピクミン虎ちゃん,
-	testball.Render(g_pd3dDevice, camera, light);//テストボール,
+	tora     .Render(g_pd3dDevice, camera, light); //とらちゃん,
+	ground   .Render(g_pd3dDevice, camera, light); //地面,
+	sonya    .Render(g_pd3dDevice, camera, light); //ソーニャちゃん,
+	pikuTiger.Render(g_pd3dDevice, camera, light); //ピクミン虎ちゃん,
+	testball .Render(g_pd3dDevice, camera, light); //テストボール,
+
 	skinmodel.Draw(&camera.GetViewMatrix(), &camera.GetProjectionMatrix());
 	/*	-	-	-	-	-	-	-	-	*/
 	
-	/*オフスクリーン*/
+	/*	オフスクリーン,	*/
 
-	renderTarget.Render(g_pd3dDevice,camera);
-
-	static int renderCount = 0;
-	renderCount++;
-	D3DXMATRIXA16 matWorld;
-	D3DXMatrixRotationY(&matWorld, renderCount / 500.0f);
+	renderTarget.Render(g_pd3dDevice,camera)              ;
+	static int renderCount = 0                            ;
+	renderCount++                                         ;
+	D3DXMATRIXA16 matWorld                                ;
+	D3DXMatrixRotationY(&matWorld, renderCount / 500.0f)  ;
 	sprite.Draw(matWorld,camera,renderTarget.GetTexture());
 
 	// シーンの描画終了。
 	g_pd3dDevice->EndScene();
 
-
 	// バックバッファとフロントバッファを入れ替える。
 	g_pd3dDevice->Present(NULL, NULL, NULL, NULL);
+
 #if debuGmodE
-	//デバッグテキスト表示
+	//FPSの計測,
 	sw.Stop();
 #endif //_debuGmodE
 
@@ -169,28 +172,29 @@ VOID Render()
 -----------------------------------------------------------------------------*/
 void Update()
 {
+#if debuGmodE
+	//FPSの計測,
 	sw.Start();
+#endif //_debuGmodE
 	animation.Update(1.0f / 60.0f);//anime
 
-	light.Update(); //らいと
-	camera.Update();//かめら
+	light.Update();    //らいと
+	camera.Update();   //かめら
 
 
-	tora.Update();//とらちゃん
-	sonya.Update();//そにゃちゃん
-	ground.Update();//じめん
-	pikuTiger.Update();//ぴくぴくとらちゃん
-
-
-	testball.Update();//テストボアール
+	tora     .Update();     //とらちゃん
+	sonya    .Update();     //そにゃちゃん
+	ground   .Update();     //じめん
+	pikuTiger.Update();     //ぴくぴくとらちゃん
+	testball .Update();		//テストボアール
 
 	
-	player.Update();//ぷれいや
-	pikumin.Update();//ぴくみん
+	player.Update();   //ぷれいや
+	pikumin.Update();  //ぴくみん
 
-	if (InputKey::InputHoldCode(VK_SPACE))
+	if (XInput->IsPress(enButtonA))
 	{
-		animation.PlayAnimation(3);
+		animation.PlayAnimation(2);
 	}
 
 	skinmodel.UpdateWorldMatrix(D3DXVECTOR3(0.0f, 0.0f, 0.0f), D3DXQUATERNION(0.0f, 0.0f, 0.0f, 1.0f), D3DXVECTOR3(1.0f, 1.0f, 1.0f));
@@ -200,10 +204,9 @@ void Update()
 //-----------------------------------------------------------------------------
 void Terminate()
 {
-	tora.Release();
-	ground.Release();
-	sonya.Release();
+	tora     .Release();
+	ground   .Release();
+	sonya    .Release();
 	pikuTiger.Release();
-
-	testball.Release();
+	testball .Release();
 }

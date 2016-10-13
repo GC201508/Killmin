@@ -11,22 +11,22 @@ namespace{
 		EnButton	vBotton;	//!<仮想ボタン,
 		DWORD		xButton;	//!<XBoxコントローラのボタン,
 	}const vPadToXPadTable[enButtonNum] = {
-		{ enButtonUp, XINPUT_GAMEPAD_DPAD_UP },
-		{ enButtonDown, XINPUT_GAMEPAD_DPAD_DOWN },
-		{ enButtonLeft, XINPUT_GAMEPAD_DPAD_LEFT },
-		{ enButtonRight, XINPUT_GAMEPAD_DPAD_RIGHT },
-		{ enButtonA, XINPUT_GAMEPAD_A },
-		{ enButtonB, XINPUT_GAMEPAD_B },
-		{ enButtonY, XINPUT_GAMEPAD_Y },
-		{ enButtonX, XINPUT_GAMEPAD_X },
-		{ enButtonSelect, XINPUT_GAMEPAD_BACK },
-		{ enButtonStart, XINPUT_GAMEPAD_START },
-		{ enButtonRB1, XINPUT_GAMEPAD_RIGHT_SHOULDER },
-		{ enButtonRB2, 0 },
-		{ enButtonRB3, XINPUT_GAMEPAD_RIGHT_THUMB },
-		{ enButtonLB1, XINPUT_GAMEPAD_LEFT_SHOULDER },
-		{ enButtonLB2, 0 },
-		{ enButtonLB3, XINPUT_GAMEPAD_LEFT_THUMB },
+		{ enButtonUp    , XINPUT_GAMEPAD_DPAD_UP        },
+		{ enButtonDown  , XINPUT_GAMEPAD_DPAD_DOWN      },
+		{ enButtonLeft  , XINPUT_GAMEPAD_DPAD_LEFT      },
+		{ enButtonRight , XINPUT_GAMEPAD_DPAD_RIGHT     },
+		{ enButtonA     , XINPUT_GAMEPAD_A              },
+		{ enButtonB     , XINPUT_GAMEPAD_B              },
+		{ enButtonY     , XINPUT_GAMEPAD_Y              },
+		{ enButtonX     , XINPUT_GAMEPAD_X              },
+		{ enButtonSelect, XINPUT_GAMEPAD_BACK           },
+		{ enButtonStart , XINPUT_GAMEPAD_START          },
+		{ enButtonRB1   , XINPUT_GAMEPAD_RIGHT_SHOULDER },
+		{ enButtonRB2   , 0                             },
+		{ enButtonRB3   , XINPUT_GAMEPAD_RIGHT_THUMB    },
+		{ enButtonLB1   , XINPUT_GAMEPAD_LEFT_SHOULDER  },
+		{ enButtonLB2   , 0                             },
+		{ enButtonLB3   , XINPUT_GAMEPAD_LEFT_THUMB     },
 	};
 
 	// * @brief 仮想ボタンとキーボードとの関連付けを表す構造体,
@@ -34,30 +34,30 @@ namespace{
 		EnButton vButton;		//!<仮想ボタン
 		DWORD keyCoord;			//!<キーボードのキーコード。
 	}const vPadToKeyboardTable[enButtonNum] = {
-		{ enButtonUp, '8' },
-		{ enButtonDown, '2' },
-		{ enButtonLeft, '4' },
-		{ enButtonRight, '6' },
-		{ enButtonA, 'J' },
-		{ enButtonB, 'K' },
-		{ enButtonY, 'I' },
-		{ enButtonX, 'O' },
-		{ enButtonSelect, VK_SPACE },
-		{ enButtonStart, VK_RETURN },
-		{ enButtonRB1, '7' },
-		{ enButtonRB2, '8' },
-		{ enButtonRB3, '9' },
-		{ enButtonLB1, 'B' },
-		{ enButtonLB2, 'N' },
-		{ enButtonLB3, 'M' },
+		{ enButtonUp    , '8'       },
+		{ enButtonDown  , '2'       },
+		{ enButtonLeft  , '4'       },
+		{ enButtonRight , '6'       },
+		{ enButtonA     , 'J'       },
+		{ enButtonB     , 'K'       },
+		{ enButtonY     , 'I'       },
+		{ enButtonX     , 'O'       },
+		{ enButtonSelect, VK_SPACE  },
+		{ enButtonStart , VK_RETURN },
+		{ enButtonRB1   , '7'       },
+		{ enButtonRB2   , '8'       },
+		{ enButtonRB3   , '9'       },
+		{ enButtonLB1   , 'B'       },
+		{ enButtonLB2   , 'N'       },
+		{ enButtonLB3   , 'M'       },
 	};
 }
 
 XInputMode::XInputMode() : padNo(0)
 {
-	memset(&state, 0, sizeof(state));
+	memset(&state , 0, sizeof(state))  ;
 	memset(trigger, 0, sizeof(trigger));
-	memset(press, 0, sizeof(press));
+	memset(press  , 0, sizeof(press))  ;
 	StickInit();
 }
 
@@ -67,7 +67,6 @@ void XInputMode::Init(int padNo)
 {
 	this->padNo = padNo;
 }
-
 
 void XInputMode::Update()
 {
@@ -115,12 +114,10 @@ void XInputMode::XInputResultConnection()
 
 void XInputMode::LeftStickInput()
 {
-	if (
-		(SSGP.sThumbLX < INPUT_DEADZONE &&
-		SSGP.sThumbLX > -INPUT_DEADZONE) &&
-
-		(SSGP.sThumbLY < INPUT_DEADZONE &&
-		SSGP.sThumbLY > -INPUT_DEADZONE))
+	if ((SSGP.sThumbLX < INPUT_DEADZONE   &&
+		 SSGP.sThumbLX > -INPUT_DEADZONE) &&
+		(SSGP.sThumbLY < INPUT_DEADZONE   &&
+		 SSGP.sThumbLY > -INPUT_DEADZONE))
 	{
 		SSGP.sThumbLX = 0;
 		SSGP.sThumbLY = 0;
@@ -186,10 +183,10 @@ const int RS_LEFT  = VK_LEFT;
 const int RS_RIGHT = VK_RIGHT;
 const int RS_UP    = VK_UP;
 const int RS_DOWN  = VK_DOWN;
-const int LS_LEFT = 'A';
+const int LS_LEFT  = 'A';
 const int LS_RIGHT = 'D';
-const int LS_UP = 'W';
-const int LS_DOWN = 'S';
+const int LS_UP    = 'W';
+const int LS_DOWN  = 'S';
 void XInputMode::KeyboardInput()
 {
 	if (state.bConnected)
