@@ -5,21 +5,39 @@
 	※ あくまで開発段階のデバッグ用として留めましょう
 */
 #include "System.h"
+#include <vector>
 #define SAFE_RELEASE(p) { if(p) { (p)->Release(); (p) = NULL; } }
-
 class DebugFont
 {
-	LPD3DXFONT	pFont;	// フォントオブジェクト
+	LPD3DXFONT	pFont;		//!<フォントオブジェクト,
+	struct TEXT_INFO		//!<テキスト情報
+	{
+		std::vector<char*> vText;	//!<テキスト
+		std::vector<BYTE>	line;	//!<行数
+	}textInfo;
+public:
+	// * @brief	vText配列に追加する,
+	// * @param [in]	追加する文字,
+	void AddText(char* c){ 	if (!IsExsitingText(c)) { textInfo.vText.push_back(c); }}
+private:
+	// * @brief		vText配列の既存文字を調べる
+	// * @param		[in]	既存か知りたい文字
+	// * @return	[true]	既存文字あり	[false]ない
+	bool IsExsitingText(char* c){
+		for (auto vT : textInfo.vText){
+			if (vT == c) { return true; }
+		}
+		return false;
+	}
 public:
 	void Init(LPDIRECT3DDEVICE9 pd3d);
-	void Render(double d);
+
+	// * @brief DrowTextを実行する(文字を描画する)
+	void Render();
 };
 
 class CStopwatch {
 public:
-	/*!
-	*@brief	コンストラクタ。
-	*/
 	CStopwatch()
 	{
 		freq         = 0;
@@ -29,12 +47,7 @@ public:
 		elapsedMill  = 0.0;
 		elapsedMicro = 0.0;
 	}
-	/*!
-	*@brief	デストラクタ。
-	*/
-	~CStopwatch()
-	{
-	}
+	~CStopwatch(){}
 	/*!
 	*@brief	計測開始。
 	*/

@@ -28,26 +28,26 @@ DebugFont Dfont;
 //-----------------------------------------------------------------------------
 
 //lib
-Camera camera;//カメラ
-Light light;//ライト
+Camera camera	;	//カメラ
+Light  light	;  //ライト
 
 //model
-class Tiger : public Model{ LPCTSTR FileName()override { return "Assets/model/tiger.X"; } }tora;//とらちゃん
-class Ground : public Model{ LPCTSTR FileName()override { return "Assets/model/ground.X"; } }ground;//地面
-class Sonya : public Model{ LPCTSTR FileName()override { return "Assets/model/sn/ソーニャ.X"; } }sonya;//ソーニャちゃん
-class TestPikumin : public Model{ LPCTSTR FileName()override { return "Assets/model/TyokurituTiger.X"; } }pikuTiger;//ピクミンタイガーちゃん
+class Tiger       : public Model{ LPCTSTR FileName()override { return "Assets/model/tiger.X"		 ;	} }tora		;      //とらちゃん
+class Ground      : public Model{ LPCTSTR FileName()override { return "Assets/model/ground.X"		 ;	} }ground	;     //地面
+class Sonya       : public Model{ LPCTSTR FileName()override { return "Assets/model/sn/ソーニャ.X"	 ;	} }sonya	;    //ソーニャちゃん
+class TestPikumin : public Model{ LPCTSTR FileName()override { return "Assets/model/TyokurituTiger.X";	} }pikuTiger;	//ピクミンタイガーちゃん
 
 //TODO:(たけまさ,)素敵なライト確認用,
-class ball : public Model{ LPCTSTR FileName()override { return "Assets/model/sphere.X"; } }testball;//テストボール
+class ball        : public Model{ LPCTSTR FileName()override { return "Assets/model/sphere.X"		 ;	} }testball	;	 //テストボール
 
 
 //オフスクリーン
-Sprite sprite;
-RenderTarget renderTarget;
+Sprite			sprite		;
+RenderTarget	renderTarget;
 
 //なんとかなんとか
-Player player;//プレイヤー
-Pikumin pikumin;//ぴくみん
+Player		player ;	//プレイヤー
+Pikumin		pikumin;	//ぴくみん
 
 //スキンモデル
 SkinModel skinmodel;
@@ -133,7 +133,17 @@ VOID Render()
 
 #if debuGmodE
 	//デバッグテキスト表示,
-	Dfont.Render(time);
+	char timetext [256];	//FPS
+	char testText [256];    //テスト0
+	char testText2[256];    //テスト1
+	sprintf(timetext , "fps = %lf\n", 1.0f / time);
+	sprintf(testText , "てすときるみー")          ;
+	sprintf(testText2, "ネコクマウササー")        ;
+	if (XInput->IsPress(enButtonB)){ sprintf(testText, "わーい"); }
+	Dfont.AddText(timetext) ;
+	Dfont.AddText(testText) ;
+	Dfont.AddText(testText2);
+	Dfont.Render();
 #endif
 
 	/*	-	-	-	-	-	-	-	-	*/
@@ -178,7 +188,7 @@ void Update()
 #endif //_debuGmodE
 	animation.Update(1.0f / 60.0f);//anime
 
-	light.Update();    //らいと
+	light .Update();    //らいと
 	camera.Update();   //かめら
 
 
@@ -189,7 +199,7 @@ void Update()
 	testball .Update();		//テストボアール
 
 	
-	player.Update();   //ぷれいや
+	player .Update();   //ぷれいや
 	pikumin.Update();  //ぴくみん
 
 	if (XInput->IsPress(enButtonA))
