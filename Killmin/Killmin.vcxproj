@@ -96,6 +96,7 @@
     <ClCompile Include="SkinModel.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="DebugFont.cpp" />
+    <ClCompile Include="ShadpwMap.cpp" />
     <ClCompile Include="XInputMode.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="System.cpp" />
@@ -107,6 +108,7 @@
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="DebugFont.h" />
+    <ClInclude Include="ShadowMap.h" />
     <ClInclude Include="XInputMode.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="RenderTarget.h" />

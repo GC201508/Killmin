@@ -1,17 +1,25 @@
 #include "System.h"
+
+//何に分類したらいいの
 #include "Camera.h"
 #include "Light.h"
 #include "InputKey.h"
 #include "XInputMode.h"
+
 //model
 #include "Model.h"
 
 //オフスクリーン
 #include "Sprite.h"
 #include "RenderTarget.h"
+
+//シャドマップ
+#include "ShadowMap.h"
+
 //役割
 #include "Player.h"
 #include "Pikumin.h"
+
 //スキンモデル
 #include "SkinModel.h"
 #include "ModelData.h"
@@ -45,6 +53,9 @@ class ball        : public Model{ LPCTSTR FileName()override { return "Assets/mo
 Sprite			sprite		;
 RenderTarget	renderTarget;
 
+//シャドマップ,
+ShadowMap shadowMap;	//シャドマップ,
+
 //なんとかなんとか
 Player		player ;	//プレイヤー
 Pikumin		pikumin;	//ぴくみん
@@ -69,7 +80,7 @@ void Init()
 	pikuTiger.Init(g_pd3dDevice);
 	testball .Init(g_pd3dDevice);
 
-
+	//もでうぽじしょんしてい,
 	tora     .SetPosition(Vec3(0.5f , 0.77f, 0.0f ))  ;
 	ground   .SetPosition(Vec3(0.0f , -3.5f, 0.0f ))  ;
 	sonya    .SetPosition(Vec3(-3.0f, 1.04f, 0.0f ))  ;
@@ -88,6 +99,11 @@ void Init()
 		0	                    //マルチサンプリングしないので０を指定。
 		);
 	renderTarget.InitGeometry(g_pd3dDevice);
+
+
+	//シャドマップ
+	shadowMap.Init(g_pd3dDevice,&camera, &light,&player);
+
 
 	//ぷれいや情報追加,
 	player.setInit(&tora, &camera);
@@ -112,15 +128,22 @@ void Init()
 #endif //__debuGmodE
 
 }
+
+#if debuGmodE
 //TODO:時間
-CStopwatch sw;
+CStopwatch sw; 
+#endif //__debuGmodE
 //-----------------------------------------------------------------------------
 // Name: 描画処理。
 //-----------------------------------------------------------------------------
 VOID Render()
 {
-	double time = sw.GetElapsed();
-
+#if debuGmodE
+	//デバック用変数
+	double time = sw.GetElapsed(); //FPS
+	float leftStickX = XInput->getLeftStickX();
+	float leftStickY = XInput->getLeftStickY();
+#endif //_debuGmodE
 
 	//シーンの描画開始。
 	g_pd3dDevice->BeginScene();	
@@ -138,13 +161,16 @@ VOID Render()
 	char testText2[256];    //テスト1
 	sprintf(timetext , "fps = %lf\n", 1.0f / time);
 	sprintf(testText , "てすときるみー")          ;
-	sprintf(testText2, "ネコクマウササー")        ;
+	sprintf(testText2, "LStick : X = %f Y = %f", leftStickX, leftStickY);
 	if (XInput->IsPress(enButtonB)){ sprintf(testText, "わーい"); }
 	Dfont.AddText(timetext) ;
 	Dfont.AddText(testText) ;
 	Dfont.AddText(testText2);
 	Dfont.Render();
-#endif
+#endif //_debuGmodE
+
+	/*	ShadowMap	*/
+	shadowMap.Draw(g_pd3dDevice);
 
 	/*	-	-	-	-	-	-	-	-	*/
 	tora     .Render(g_pd3dDevice, camera, light); //とらちゃん,
@@ -155,6 +181,8 @@ VOID Render()
 
 	skinmodel.Draw(&camera.GetViewMatrix(), &camera.GetProjectionMatrix());
 	/*	-	-	-	-	-	-	-	-	*/
+	
+	
 	
 	/*	オフスクリーン,	*/
 
@@ -208,6 +236,8 @@ void Update()
 	}
 
 	skinmodel.UpdateWorldMatrix(D3DXVECTOR3(0.0f, 0.0f, 0.0f), D3DXQUATERNION(0.0f, 0.0f, 0.0f, 1.0f), D3DXVECTOR3(1.0f, 1.0f, 1.0f));
+
+	shadowMap.Update();
 }
 //-----------------------------------------------------------------------------
 //ゲームが終了するときに呼ばれる処理。

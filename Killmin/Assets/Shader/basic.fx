@@ -117,11 +117,27 @@ float4 PSMain(VS_OUTPUT In) : COLOR
 	return color;
 }
 
+// *	@brief	ピクセルシェーダ,
+float4 PSShadowMap(VS_OUTPUT In) : COLOR
+{
+	//灰色のカラーを出力している,
+	return float4 (0.5f, 0.5f, 0.5f, 1.0f);
+}
+
 technique SkinModel
 {
 	pass p0
 	{
-		VertexShader = compile vs_2_0 VSMain();
-		PixelShader = compile ps_2_0 PSMain();
+		VertexShader = compile vs_3_0 VSMain();
+		PixelShader = compile ps_3_0 PSMain();
 	}
 }
+
+technique ShadowMap
+{
+	pass p0
+	{
+		VertexShader = compile vs_3_0 VSMain();
+		PixelShader = compile ps_3_0 PSShadowMap();
+	}
+};

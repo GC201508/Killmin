@@ -3,14 +3,15 @@
 #include "Camera.h"
 Model::Model()
 {
-	mesh        = NULL;
-	textures    = NULL;
-	numMaterial = 0;
-	effect      = NULL;
-	position.x  = 0.0f;
-	position.y  = 0.0f;
-	position.z  = 0.0f;
-	angle       = D3DXToRadian(0.f);
+	mesh          = NULL;
+	textures      = NULL;
+	numMaterial   = 0;
+	effect        = NULL;
+	position.x    = 0.0f;
+	position.y    = 0.0f;
+	position.z    = 0.0f;
+	angle         = D3DXToRadian(0.f);
+	setIsRenderShadowMap(false);
 	D3DXMatrixIdentity(&mWorld);	//単位行列を作成
 	D3DXMatrixIdentity(&mRotation); //単位行列を作成
 }
@@ -93,7 +94,16 @@ void Model::Update()
 //描画
 void Model::Render(LPDIRECT3DDEVICE9 pd3dDevice,Camera camera,Light light)
 {
-	effect->SetTechnique("さといも,"); //アクティブなテクニックを設定する。
+	//アクティブなテクニックを設定する,
+	if (!isRenderShadowMap){
+		//通常描画
+		effect->SetTechnique("SkinModel");
+	}
+	else{
+		//シャドウマップへの書き込みテキニック,
+		effect->SetTechnique("ShadowMap");
+
+	}
 	effect->Begin(NULL, D3DXFX_DONOTSAVESHADERSTATE); //テクニックの適用を開始する。
 	effect->BeginPass(0); //アクティブなテクニック内で、パスを開始します。
 
@@ -116,14 +126,14 @@ void Model::Render(LPDIRECT3DDEVICE9 pd3dDevice,Camera camera,Light light)
 	effect->SetVector("g_ambientLight", &light.getAmbientL()); //環境光を設定
 	effect->SetVector("vEyePt", &Vec4(camera.GetEyePt()));
 
-	//->CommitChanges　アクティブなパス内で生じるステート変化をレンダリングの前にデバイスに伝えるそうです。　・・・どゆ意味？
-	effect->CommitChanges(); //データの転送が確定する。 描画を行う前に一度だけ呼び出す
 
 
 	for (DWORD i = 0; i < numMaterial; i++)
 	{
 		//->SetTexture　テクスチャを設定する
 		effect->SetTexture("g_diffuseTexture", textures[i]);
+		//->CommitChanges　アクティブなパス内で生じるステート変化をレンダリングの前にデバイスに伝えるそうです。　・・・どゆ意味？
+		effect->CommitChanges(); //データの転送が確定する。 描画を行う前に一度だけ呼び出す
 
 		//Draw the mesh subset(原文ママ)
 		//->DrawSubset　メッシュのサブセットを描画する。　サブセットって何よぅ
