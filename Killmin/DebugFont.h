@@ -15,14 +15,16 @@ class DebugFont
 		std::vector<char*> vText;	//!<テキスト
 		std::vector<BYTE>	line;	//!<行数
 	}textInfo;
+
 public:
-	// * @brief	vText配列に追加する,
+	// * @brief	vText配列に新規追加する,
 	// * @param [in]	追加する文字,
 	void AddText(char* c){ 	if (!IsExsitingText(c)) { textInfo.vText.push_back(c); }}
+
 private:
-	// * @brief		vText配列の既存文字を調べる
-	// * @param		[in]	既存か知りたい文字
-	// * @return	[true]	既存文字あり	[false]ない
+	// * @brief		同じアドレスから値を受け取らない,
+	// * @param		[in]	検査するcharポインタ,
+	// * @return	[true]	該当情報あり	[false]ない
 	bool IsExsitingText(char* c){
 		for (auto vT : textInfo.vText){
 			if (vT == c) { return true; }

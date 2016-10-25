@@ -42,8 +42,8 @@ void DebugFont::Render()
 			textInfo.vText[i],				// 描画テキスト
 			-1,								// 全て表示
 			&rc,							// 表示範囲
-			DT_LEFT,						// 左寄せ
-			D3DCOLOR_XRGB(255, 255, 0)	// 黄色
+			DT_LEFT | DT_NOCLIP,			// 左寄せ
+			D3DCOLOR_XRGB(255, 255, 0)		// 黄色
 			);
 	}
 }
