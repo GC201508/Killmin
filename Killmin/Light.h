@@ -1,7 +1,7 @@
 #pragma once
 #include "System.h"
 
-//らいとうらう
+//キャラクターのらいとうらう
 
 #define tLIGHT_NUM 4
 class Light
