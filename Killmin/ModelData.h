@@ -53,6 +53,13 @@ public:
 	{
 		return lpAnimController;
 	}
+
+	LPD3DXMESH GetOrgMeshFirst()
+	{
+		return GetOrgMesh(frameRoot);
+	}
+
+	LPD3DXMESH GetOrgMesh(LPD3DXFRAME frame);
 private:
 	LPD3DXFRAME frameRoot;  //フレームルート
 	ID3DXAnimationController* lpAnimController;  //アニメーションコントローラ

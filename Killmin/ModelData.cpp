@@ -775,3 +775,29 @@ void ModelData::UpdateBoneMatrix(const D3DXMATRIX& matWorld)
 {
 	UpdateFrameMatrices(frameRoot, &matWorld);
 }
+
+LPD3DXMESH ModelData::GetOrgMesh(LPD3DXFRAME frame)
+{
+	D3DXMESHCONTAINER_DERIVED* pMeshContainer = (D3DXMESHCONTAINER_DERIVED*)(frame->pMeshContainer);
+	if (pMeshContainer != NULL) {
+		return pMeshContainer->pOrigMesh;
+	}
+	if (frame->pFrameSibling != NULL) {
+		//兄弟
+		LPD3DXMESH mesh = GetOrgMesh(frame->pFrameSibling);
+
+		if (mesh) {
+			return mesh;
+		}
+	}
+	if (frame->pFrameFirstChild != NULL)
+	{
+		//子供。
+		LPD3DXMESH mesh = GetOrgMesh(frame->pFrameFirstChild);
+		if (mesh) {
+			return mesh;
+		}
+	}
+
+	return NULL;
+}

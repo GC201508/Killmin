@@ -143,6 +143,12 @@ void XInputMode::LeftStickInput()
 		else{
 			stick.LeftY = s_cast<float>(SSGP.sThumbLY) / -SHRT_MIN;
 		}
+
+		//入力量の再正規化（純正品デバイス以外でも値を一定にするため）,
+		Vec2 hoge = Vec2(stick.LeftX, stick.LeftY);
+		D3DXVec2Normalize(&hoge, &hoge);
+		stick.LeftX = hoge.x;
+		stick.LeftY = hoge.y;
 	}
 }
 
@@ -176,6 +182,12 @@ void XInputMode::RightStickInput()
 		else{
 			stick.RightY = s_cast<float>(SSGP.sThumbRY) / -SHRT_MIN;
 		}
+
+		//入力量の再正規化（純正品デバイス以外でも値を一定にするため）,
+		Vec2 hoge = Vec2(stick.RightX, stick.RightY);
+		D3DXVec2Normalize(&hoge, &hoge);
+		stick.RightX = hoge.x;
+		stick.RightY = hoge.y;
 	}
 }
 

@@ -23,8 +23,8 @@ void Pikumin::Init()
 	}
 	else
 	{
-		addPos = lpModel->lpPos;
-		AngleY = lpModel->lpAngle;
+		addPos = lpModel->lpPos();
+		AngleY = lpModel->lpAngle();
 		D3DXVec3Subtract(&direction, lpPlayerPos, addPos);
 		dxFor::Vec3Normalize(&direction);
 		float angle = 2 * fPI - atan2f(direction.z, direction.x);

@@ -5,6 +5,12 @@ LPDIRECT3DDEVICE9       g_pd3dDevice   = NULL;
 Effect*			        g_effect       = NULL;
 XInputMode*				XInput         = NULL;
 
+#if debuGmodE
+DebugFont*				Dfont          = NULL;
+CStopwatch*				sw             = NULL;
+#endif //__debuGmodE
+
+
 extern void Init();
 extern void Render();
 extern void Update();
@@ -17,6 +23,11 @@ void InitD3D(HWND hWnd)
 	
 	g_effect = new Effect;
 	XInput   = new XInputMode;
+
+#if debuGmodE
+	Dfont    = new DebugFont;
+	sw       = new CStopwatch;
+#endif //__debuGmodE
 
 	//D3Dオブジェクトを作成する。
 	g_pD3D = Direct3DCreate9(D3D_SDK_VERSION);

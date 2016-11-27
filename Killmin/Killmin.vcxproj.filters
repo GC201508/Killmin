@@ -44,6 +44,18 @@
     <Filter Include="Source\07 SHADOW_MAP">
       <UniqueIdentifier>{cec5e2d0-013e-4b54-8281-673ab263edc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\09 PHYSICS">
+      <UniqueIdentifier>{671097ee-6a82-4441-be2b-042530f0c6ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\10 SCENE">
+      <UniqueIdentifier>{fb7d236a-3871-45fd-a132-664d36f8aee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\11 TEX_2D">
+      <UniqueIdentifier>{e30c6a61-4d47-41b8-8940-3ec33ea29318}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\12 COLLISION">
+      <UniqueIdentifier>{1682c70f-cef7-402d-a7cb-53accdcafdf0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,6 +108,36 @@
     </ClCompile>
     <ClCompile Include="ShadpwMap.cpp">
       <Filter>Source\07 SHADOW_MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClCompile>
+    <ClCompile Include="CapsuleCollider.cpp">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterController.cpp">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshCollider.cpp">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source\10 SCENE</Filter>
+    </ClCompile>
+    <ClCompile Include="TestGame.cpp">
+      <Filter>Source\10 SCENE</Filter>
+    </ClCompile>
+    <ClCompile Include="Tex2d.cpp">
+      <Filter>Source\11 TEX_2D</Filter>
+    </ClCompile>
+    <ClCompile Include="P_LifeBer.cpp">
+      <Filter>Source\04 PLAYER</Filter>
+    </ClCompile>
+    <ClCompile Include="OBB.cpp">
+      <Filter>Source\12 COLLISION</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +197,42 @@
     </ClInclude>
     <ClInclude Include="ShadowMap.h">
       <Filter>Source\07 SHADOW_MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody.h">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClInclude>
+    <ClInclude Include="CapsuleCollider.h">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterController.h">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionAttr.h">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollider.h">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshCollider.h">
+      <Filter>Source\09 PHYSICS</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source\10 SCENE</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGame.h">
+      <Filter>Source\10 SCENE</Filter>
+    </ClInclude>
+    <ClInclude Include="Tex2d.h">
+      <Filter>Source\11 TEX_2D</Filter>
+    </ClInclude>
+    <ClInclude Include="P_LifeBer.h">
+      <Filter>Source\04 PLAYER</Filter>
+    </ClInclude>
+    <ClInclude Include="OBB.h">
+      <Filter>Source\12 COLLISION</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

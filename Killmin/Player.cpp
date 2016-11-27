@@ -5,11 +5,12 @@
 #define PLAYER_SPEED 0.03f
 Player::Player()
 {//‰Šú‰»s‚¤
-	lpModel   = nullptr;
-	lpCam     = nullptr;
-	addPos    = nullptr;
-	AngleY    = nullptr;
-	direction = Vec3(0.f, 0.f, 0.f);
+	lpModel     = nullptr;
+	lpCam       = nullptr;
+	lpShadowMap = nullptr;
+	addPos      = nullptr;
+	AngleY      = nullptr;
+	direction   = Vec3(0.f, 0.f, 0.f);
 }
 Player::~Player(){}
 
@@ -19,8 +20,17 @@ void Player::Init()
 		printf("‚à‚Å‚é‚È‚¢‚¼");	
 	}
 	else{
-		addPos = lpModel->lpPos;
-		AngleY = lpModel->lpAngle;
+		addPos = lpModel->lpPos();
+		AngleY = lpModel->lpAngle();
+		lpModel->setIsReversalModel(true);
+		lpModel->setIsToonShader(true);
+		if (lpShadowMap == nullptr)
+		{
+			printf("‚µ‚á‚Ç‚Ü‚Á‚Õ‚È‚¢‚¼");
+		}
+		else{
+			lpModel->setShadowMap(lpShadowMap);
+		}
 	}
 
 	if (lpCam == nullptr){
@@ -28,7 +38,7 @@ void Player::Init()
 	}
 	else{
 		camToPosUpdate();
-		lpCam->setLpPlayerPos(lpModel->lpPos);
+		lpCam->setLpPlayerPos(lpModel->lpPos());
 	}
 }
 

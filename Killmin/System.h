@@ -12,7 +12,6 @@
 #define WindowSizeX 960
 #define WindowSizeY 540
 
-
 /*	☆ D3DXってのがまどろっこしい ☆	*/
 #define Vec2 D3DXVECTOR2  //入力がめんどい
 #define Vec3 D3DXVECTOR3  //打つのめんどい
@@ -44,3 +43,17 @@ extern XInputMode*		XInput;
 
 /*	-	-	デバックUIの表示	-	-	*/
 #define debuGmodE 1; //[ON=1][OFF=0]
+
+#if debuGmodE
+//デバッグ
+#include "DebugFont.h"
+class DebugFont;
+extern DebugFont* Dfont;
+//TODO:時間
+class CStopwatch;
+extern CStopwatch* sw;
+#endif //__debuGmodE
+
+
+#include "btBulletDynamicsCommon.h"
+#include "BulletCollision\CollisionDispatch\btGhostObject.h"

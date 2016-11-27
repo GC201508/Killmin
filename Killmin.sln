@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Killmin", "Killmin\Killmin.vcxproj", "{C19AB9C2-9357-42A8-83F5-17BE6442BD81}"
+	ProjectSection(ProjectDependencies) = postProject
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C} = {28EF574A-84DB-3CB0-9B45-DB3545B2D05C}
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E} = {4DCE52A5-106C-3D94-815D-C8EBC6133B5E}
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0} = {9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{277CBBB2-2084-4DC1-8EC0-09E3D24E1363}"
 EndProject
@@ -11,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{B03B0CD3
 	ProjectSection(SolutionItems) = preProject
 		Killmin\Assets\model\ground.x = Killmin\Assets\model\ground.x
 		Killmin\Assets\model\sphere.X = Killmin\Assets\model\sphere.X
+		Killmin\Assets\model\TestKusaStage.x = Killmin\Assets\model\TestKusaStage.x
 		Killmin\Assets\model\tiger.x = Killmin\Assets\model\tiger.x
 		Killmin\Assets\model\TyokurituTiger.x = Killmin\Assets\model\TyokurituTiger.x
 		Killmin\Assets\model\Unity.X = Killmin\Assets\model\Unity.X
@@ -26,19 +32,61 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shader", "Shader", "{D76AF6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sn", "sn", "{6C61D6E6-BD13-444C-974F-29C7F226CFC9}"
 	ProjectSection(SolutionItems) = preProject
+		Killmin\Assets\model\sn\Sonya.x = Killmin\Assets\model\sn\Sonya.x
 		Killmin\Assets\model\sn\ソーニャ.x = Killmin\Assets\model\sn\ソーニャ.x
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletCollision", "bulletPhysics\src\BulletCollision\BulletCollision.vcxproj", "{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BulletDynamics", "bulletPhysics\src\BulletDynamics\BulletDynamics.vcxproj", "{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LinearMath", "bulletPhysics\src\LinearMath\LinearMath.vcxproj", "{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tex2d", "tex2d", "{707C99C7-B753-49BD-82F0-1A81DECD090C}"
+	ProjectSection(SolutionItems) = preProject
+		Killmin\Assets\tex2d\MarioGauge_W46_H49.png = Killmin\Assets\tex2d\MarioGauge_W46_H49.png
 	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		MinSizeRel|Win32 = MinSizeRel|Win32
 		Release|Win32 = Release|Win32
+		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.Debug|Win32.ActiveCfg = Debug|Win32
 		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.Debug|Win32.Build.0 = Debug|Win32
+		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.MinSizeRel|Win32.ActiveCfg = Release|Win32
+		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.MinSizeRel|Win32.Build.0 = Release|Win32
 		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.Release|Win32.ActiveCfg = Release|Win32
 		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.Release|Win32.Build.0 = Release|Win32
+		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
+		{C19AB9C2-9357-42A8-83F5-17BE6442BD81}.RelWithDebInfo|Win32.Build.0 = Release|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.Debug|Win32.Build.0 = Debug|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.Release|Win32.ActiveCfg = Release|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.Release|Win32.Build.0 = Release|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{28EF574A-84DB-3CB0-9B45-DB3545B2D05C}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.Debug|Win32.Build.0 = Debug|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.Release|Win32.ActiveCfg = Release|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.Release|Win32.Build.0 = Release|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{9BF1ADF3-EB57-35E8-B156-ADE8FFC7E2F0}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.Debug|Win32.Build.0 = Debug|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.Release|Win32.ActiveCfg = Release|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.Release|Win32.Build.0 = Release|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{4DCE52A5-106C-3D94-815D-C8EBC6133B5E}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +94,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B03B0CD3-84EA-4821-BBA1-BDF38E6F1AA8} = {277CBBB2-2084-4DC1-8EC0-09E3D24E1363}
 		{D76AF67D-7B16-4AFD-899A-409570240A8B} = {277CBBB2-2084-4DC1-8EC0-09E3D24E1363}
+		{707C99C7-B753-49BD-82F0-1A81DECD090C} = {277CBBB2-2084-4DC1-8EC0-09E3D24E1363}
 		{6C61D6E6-BD13-444C-974F-29C7F226CFC9} = {B03B0CD3-84EA-4821-BBA1-BDF38E6F1AA8}
 	EndGlobalSection
 EndGlobal
