@@ -4,9 +4,8 @@
 #pragma once
 
 #include "Animation.h"
+#include "ModelData.h"
 
-
-class ModelData;
 class RenderContext;
 class Light;
 /*!
@@ -40,6 +39,11 @@ public:
 	void SetLight(Light* light)
 	{
 		this->light = light;
+	}
+
+	LPD3DXMESH GetOrgMeshFirst()
+	{
+		return skinModelData->GetOrgMeshFirst();
 	}
 private:
 	D3DXMATRIX			worldMatrix;	//!<ワールド行列。
