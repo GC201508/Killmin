@@ -123,16 +123,13 @@ void Camera::Update()
 void Camera::Init()
 {
 	//vEyePt = D3DXVECTOR3(0.0f, 2.0f, -10.0f);
-	vEyePt = D3DXVECTOR3(0.0f, 6.0f, -10.0f);
+	vEyePt    = D3DXVECTOR3(0.0f, 1.0f, -5.0f);
 	vLookatPt = D3DXVECTOR3(0.0f, -2.0f, 0.0f);
-	vUpVec = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	vUpVec    = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	D3DXVec3Subtract(&toPos, &vEyePt, &vLookatPt);
 	Update();
 }
-const int RotLEFT = 188; //左回転 ＜キー
-const int RotRIGHT = 190;//右回転 ＞キー
-const int RotUP = 219;	//上回転 [キー
-const int RotDOWN = 221;//下回転 ]キー
+
 void Camera::KaitenCamera()
 {//カメラ回せ回せ
 	Matrix mRot;
@@ -142,30 +139,24 @@ void Camera::KaitenCamera()
 	float spd = CamRotSpd;
 	dxFor::xzDir Dir;
 
-	if (onKey(RotLEFT) or onKey(RotRIGHT))
+	Dir.x = XInput->getRightStickX();
+	Dir.z = XInput->getRightStickY();
+
+	if (Dir.x != 0.f)
 	{//横回転
-		if (onKey(RotLEFT)){ Dir.x++; }
-		else if (onKey(RotRIGHT)){ Dir.x--;}
 		D3DXMatrixRotationY(&mRot, spd * Dir.x);
 		dxFor::Vec3Transform(&toPos, &mRot);
 		D3DXVec3Add(&vEyePt, &vLookatPt, &toPos);
 	}
 
-	if (onKey(RotUP) or onKey(RotDOWN))
+	if (Dir.z != 0.f)
 	{//縦回転
-		if (onKey(RotUP)){ Dir.z--; }
-		else if (onKey(RotDOWN)){ Dir.z++; }
 		D3DXMatrixRotationAxis(&mRot, &vAxis, spd * Dir.z);
 		dxFor::Vec3Transform(&toPos, &mRot);
 		D3DXVec3Add(&vEyePt, &vLookatPt, &toPos);
 	}
 }
-const int MoveLEFT    = 'A';
-const int MoveRIGHT   = 'D';
-const int MoveADVANCE = 'W';
-const int MoveBACK    = 'S';
-const int MoveUP      = VK_SPACE;
-const int MoveDOWN    = VK_LSHIFT;
+
 void Camera::MoveCamera()
 {//カメラ動かせ動かせ
 /*注視点とカメラの位置を同時に動かす*/
@@ -173,10 +164,11 @@ void Camera::MoveCamera()
 	Vec3 dir(0.f,0.f,0.f);
 	Vec3 ToPos = toPos;
 
-	if (onKey(MoveRIGHT) or onKey(MoveLEFT))
+	if (XInput->IsPress(enButtonRight) or
+		XInput->IsPress(enButtonLeft))
 	{//左右
-		if (onKey(MoveRIGHT)){ dir.x--; }
-		else if (onKey(MoveLEFT)){ dir.x++; }
+		if (XInput->IsPress(enButtonRight)){ dir.x--; }
+		else if (XInput->IsPress(enButtonLeft)){ dir.x++; }
 		D3DXVec3Subtract(&ToPos, &vEyePt, &vLookatPt);
 		D3DXVec3Cross(&ToPos, &vUp, &ToPos);
 		dxFor::Vec3Normalize(&ToPos);
@@ -184,10 +176,21 @@ void Camera::MoveCamera()
 		vEyePt += ToPos * spd * dir.x;
 	}
 
-	if (onKey(MoveADVANCE) or onKey(MoveBACK))
+	if (
+		(!XInput->IsPress(enButtonRB3) and
+		  XInput->IsPress(enButtonUp)) or
+
+		(!XInput->IsPress(enButtonRB3) and
+		  XInput->IsPress(enButtonDown))
+		)
 	{//前後
-		if (onKey(MoveADVANCE)){ dir.z--; }
-		else if (onKey(MoveBACK)){ dir.z++; }
+		if ((!XInput->IsPress(enButtonRB3) and
+			  XInput->IsPress(enButtonUp)))
+		{ dir.z--; }
+		else if ((!XInput->IsPress(enButtonRB3) and
+			       XInput->IsPress(enButtonDown)))
+		{ dir.z++; }
+
 		D3DXVec3Subtract(&ToPos, &vEyePt, &vLookatPt);
 		ToPos.y = 0.f;
 		dxFor::Vec3Normalize(&ToPos);
@@ -195,10 +198,16 @@ void Camera::MoveCamera()
 		vEyePt    += ToPos * spd * dir.z;
 	}
 
-	if (onKey(MoveUP) or onKey(MoveDOWN))
+	if (
+		(XInput->IsPress(enButtonRB3) and
+		 XInput->IsPress(enButtonUp)) or
+
+		(XInput->IsPress(enButtonRB3) and
+		 XInput->IsPress(enButtonDown))
+		)
 	{//上下
-		if (onKey(MoveUP)){ dir.y++; }
-		else if (onKey(MoveDOWN)){ dir.y--; }
+		if (XInput->IsPress(enButtonUp)){ dir.y++; }
+		else if (XInput->IsPress(enButtonDown)){ dir.y--; }
 		vLookatPt.y += spd * dir.y;
 		vEyePt.y    += spd * dir.y;
 	}

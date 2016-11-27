@@ -6,7 +6,10 @@
 */
 class Camera {
 
-	enum CAMSTATE{ CS$Free = 0, CS$HoldPlayer }_CAMSTATE;
+	enum CAMSTATE{ 
+		CS$Free = 0, //!<自由にカメラを動かす
+		CS$HoldPlayer//!<Playerに注視点を置き移動します
+	}_CAMSTATE;
 
 private:
 	D3DXMATRIX				viewMatrix;			//!<ビュー行列。カメラ行列とも言う。
