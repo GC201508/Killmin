@@ -6,10 +6,6 @@
 #include "InputKey.h"
 #include "XInputMode.h"
 
-//Physics
-#include "Physics.h"
-#include "RigidBody.h"
-
 //model
 #include "Model.h"
 
@@ -34,9 +30,6 @@ class Game
 	//lib
 	Camera camera;	//カメラ
 	Light  light ;  //ライト
-
-	//Physics
-	PhysicsWorld physicsWorld;	//ヒュイジックスワールド
 
 	//model
 	class Tiger       : public Model{ LPCTSTR FileName()override { return "Assets/model/tiger.X"         ; } }tora		;      //とらちゃん
@@ -69,13 +62,6 @@ public:
 	void GameUpdate();
 	void GameRender();
 	void GameTerminate();
-
-//get
-	//物理ワールドの取得。
-	PhysicsWorld* GetPhysicsWorld()
-	{
-		return &physicsWorld;
-	}
 };
 
 extern Game* game;

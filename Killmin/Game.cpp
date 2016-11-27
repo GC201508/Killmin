@@ -8,9 +8,6 @@ void Game::GameInit()
 	//ライトを初期化。
 	light.Init();
 
-	//ヒュぃジックスワールド初期化
-	physicsWorld.Init();
-
 	//もでうしょきか,
 	tora     .Init(g_pd3dDevice);
 	ground   .Init(g_pd3dDevice);
@@ -154,10 +151,6 @@ void Game::GameUpdate()
 	sw->Start();
 #endif //_debuGmodE
 	animation.Update(1.0f / 60.0f);//anime
-
-
-	physicsWorld.Update();//フィジックスワールド
-
 
 	light .Update();    //らいと
 	camera.Update();   //かめら

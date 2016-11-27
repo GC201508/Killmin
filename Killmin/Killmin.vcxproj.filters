@@ -44,9 +44,6 @@
     <Filter Include="Source\07 SHADOW_MAP">
       <UniqueIdentifier>{cec5e2d0-013e-4b54-8281-673ab263edc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\09 PHYSICS">
-      <UniqueIdentifier>{671097ee-6a82-4441-be2b-042530f0c6ff}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\10 SCENE">
       <UniqueIdentifier>{fb7d236a-3871-45fd-a132-664d36f8aee4}</UniqueIdentifier>
     </Filter>
@@ -108,21 +105,6 @@
     </ClCompile>
     <ClCompile Include="ShadpwMap.cpp">
       <Filter>Source\07 SHADOW_MAP</Filter>
-    </ClCompile>
-    <ClCompile Include="Physics.cpp">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClCompile>
-    <ClCompile Include="RigidBody.cpp">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClCompile>
-    <ClCompile Include="CapsuleCollider.cpp">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterController.cpp">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshCollider.cpp">
-      <Filter>Source\09 PHYSICS</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source\10 SCENE</Filter>
@@ -197,27 +179,6 @@
     </ClInclude>
     <ClInclude Include="ShadowMap.h">
       <Filter>Source\07 SHADOW_MAP</Filter>
-    </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClInclude>
-    <ClInclude Include="RigidBody.h">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClInclude>
-    <ClInclude Include="CapsuleCollider.h">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterController.h">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionAttr.h">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClInclude>
-    <ClInclude Include="ICollider.h">
-      <Filter>Source\09 PHYSICS</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshCollider.h">
-      <Filter>Source\09 PHYSICS</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Source\10 SCENE</Filter>

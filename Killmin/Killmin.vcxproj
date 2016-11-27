@@ -87,19 +87,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CapsuleCollider.cpp" />
-    <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MeshCollider.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelData.cpp" />
-    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Pikumin.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="SkinModel.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="DebugFont.cpp" />
@@ -116,9 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CapsuleCollider.h" />
-    <ClInclude Include="CharacterController.h" />
-    <ClInclude Include="CollisionAttr.h" />
     <ClInclude Include="D3dxFormula.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Animation.h" />
@@ -128,10 +120,6 @@
     <ClInclude Include="P_LifeBer.h" />
     <ClInclude Include="Tex2d.h" />
     <ClInclude Include="TestGame.h" />
-    <ClInclude Include="ICollider.h" />
-    <ClInclude Include="MeshCollider.h" />
-    <ClInclude Include="Physics.h" />
-    <ClInclude Include="RigidBody.h" />
     <ClInclude Include="ShadowMap.h" />
     <ClInclude Include="XInputMode.h" />
     <ClInclude Include="Sprite.h" />
