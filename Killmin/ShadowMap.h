@@ -9,6 +9,7 @@
 class Camera;
 class Light;
 class Player;
+class Model;
 
 class ShadowMap
 {
@@ -21,10 +22,16 @@ class ShadowMap
 	Camera* lpCam;	//カメラ
 	Light* lpLight;	//ライト
 	Player* lpPlayer; //プレイヤー
+	Model* lpModel;	//モデル
 public:
 	ShadowMap();
 
-	void Init(LPDIRECT3DDEVICE9,Camera*,Light*,Player*);
+	void Init(LPDIRECT3DDEVICE9,Camera*,Light*,Model*);
 	void Update();
 	void Draw(LPDIRECT3DDEVICE9);
+
+//get
+	Matrix*	lpLightViewMatrix = &lightViewMatrix;	//ライトビューマトリクス,
+	Matrix*	lpLightProjMatrix = &lightProjMatrix;	//ライトプロジェクションマトリクス,
+	LPDIRECT3DTEXTURE9 getShadowMapRenderTex(){ return renderTarget.GetTexture(); }	//ShadowMapのRenderTexture,
 };

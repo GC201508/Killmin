@@ -12,14 +12,15 @@ ShadowMap::ShadowMap()
 	lpPlayer = nullptr;
 }
 
-void ShadowMap::Init(LPDIRECT3DDEVICE9 pd3d, Camera* lpCam, Light* lpLight, Player* lpPlayer)
+void ShadowMap::Init(LPDIRECT3DDEVICE9 pd3d, Camera* lpCam, Light* lpLight, Model* lpPlayer)
 {
 	this->lpCam = lpCam;
 	this->lpLight = lpLight;
-	this->lpPlayer = lpPlayer;
+	//this->lpPlayer = lpPlayer;
+	this->lpModel = lpPlayer;
 	renderTarget.Create(pd3d,
-		400,                    //横幅,
-		400,                    //高さ,
+		WindowSizeX,                    //横幅,
+		WindowSizeY,                    //高さ,
 		1,	                    //レンダリングターゲットにはミップマップは不要なので一枚のみ。
 		D3DFMT_A8R8G8B8,	    //カラーバッファのフォーマットはARGBの32bit
 		D3DFMT_D16,	            //学生のＰＣで24bitの深度バッファを作成できなかったので、16ビットで深度バッファを作成する。
@@ -31,13 +32,17 @@ void ShadowMap::Init(LPDIRECT3DDEVICE9 pd3d, Camera* lpCam, Light* lpLight, Play
 
 void ShadowMap::Update()	//ライトビュープロジェクション行列を更新,
 {
+	viewTarget = lpModel->GetPosition();
+	viewPosition = viewTarget;
+	viewPosition.y += 20.0f;
+
 	//カメラの上方向を決める計算だけを入れておく,
 	Vec3 tmp = viewTarget - viewPosition;
 	dxFor::Vec3Normalize(&tmp);
 	if (fabsf(tmp.y) > 0.99999f)
 	{
 		//カメラが真上か真下を向いている,
-		D3DXMatrixLookAtLH(&lightViewMatrix, &viewPosition, &viewTarget, &Vec3(1.0f, 0.0f, 0.0f));
+		D3DXMatrixLookAtLH(&lightViewMatrix, &viewPosition, &viewTarget, &Vec3(1.0f, 0.0f, 0.0f));	
 
 	}
 
@@ -59,9 +64,6 @@ void ShadowMap::Draw(LPDIRECT3DDEVICE9 pd3d)
 	pd3d->GetRenderTarget(0, &renderTargetBackup);
 	//にりにりのデブスステンシルバッファをバックアップする
 	pd3d->GetDepthStencilSurface(&depthBufferBackup);
-	
-	//レンダリングターゲットを描画す,
-	//renderTarget.Render(pd3d, *lpCam);
 
 	//レンダリングターゲットを変更する,
 	pd3d->SetRenderTarget(0, renderTarget.GetRenderTarget());
@@ -71,10 +73,14 @@ void ShadowMap::Draw(LPDIRECT3DDEVICE9 pd3d)
 	pd3d->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_XRGB(255, 255, 255),1.0f,0);
 
 	//シャドマップにレンダリンギ,
-	lpPlayer->getLpPlayerModel()->setIsRenderShadowMap(true);
-	lpPlayer->getLpPlayerModel()->Render(pd3d, *lpCam, *lpLight);
-	lpPlayer->getLpPlayerModel()->setIsRenderShadowMap(false);
+	//lpPlayer->getLpPlayerModel()->setIsRenderShadowMap(true);
+	//lpPlayer->getLpPlayerModel()->Render(pd3d, *lpCam, *lpLight);
+	//lpPlayer->getLpPlayerModel()->setIsRenderShadowMap(false);
 
+
+	lpModel->setIsRenderShadowMap(true);
+	lpModel->Render(pd3d, *lpCam, *lpLight);
+	lpModel->setIsRenderShadowMap(false);
 
 	//戻す
 	pd3d->SetRenderTarget(0, renderTargetBackup);
