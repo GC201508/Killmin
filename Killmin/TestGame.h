@@ -16,8 +16,10 @@ class TestGame
 	Camera camera;
 	Light light;
 	class Sonya : public Model{ LPCTSTR FileName()override { return "Assets/model/sn/Sonya.X"; } }sonya;
-	//class Sonya : public Model{ LPCTSTR FileName()override { return "Assets/model/TyokurituTiger.X"; } }sonya;
-	class stage : public Model{ LPCTSTR FileName()override{ return"Assets/model/TestKusaStage.X"; } }stage;
+	//class Sonya : public Model{ LPCTSTR FileName()override { return "Assets/model/tiger.X";			} }sonya; //プレイヤキャラクタ
+	class stage : public Model{ LPCTSTR FileName()override { return "Assets/model/TestKusaStage.X"; } }stage;
+	class box	: public Model{ LPCTSTR FileName()override { return "Assets/model/box.x";			} }box;
+	class star : public Model{ LPCTSTR FileName()override { return "Assets/model/Star.x"; } }star;
 	ShadowMap shadowMap;
 	Player player;
 	PLifeBer playerLifeBer;

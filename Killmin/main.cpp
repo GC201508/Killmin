@@ -7,8 +7,19 @@
 
 Game* game;
 TestGame* testgame;
+
+//TODO:シーン切り替えの確認用
 enum e{eGame = 0,eTest};
 int e_hoge = 1;
+
+//タイトル画面とか選択画面とかゲーム画面とかの切り替え用
+enum eSceneChange{
+	eS_Title = 0      ,	// タイトル画面
+	eS_DetaSelect     , // セーブデータ選択画面
+	eS_Stage          , // ステージ(マリオ６４でいうピーチ城みたいなとこ)
+	eS_StarHint		  , // スターのヒント 
+	eS_GameStage		// ゲームのステージ
+};
 
 extern void Terminate();
 

@@ -85,7 +85,7 @@ bool CollisionOBB::CollisionOBBOBB(OBB *a, OBB *b)
 	{
 		ra = a->e[i];
 		rb = b->e[0] * AbsR[i][0] + b->e[1] * AbsR[i][1] + b->e[2] * AbsR[i][2];
-		if (fabsf(t[i]) > ra + rb)return 0;
+		if (fabsf(t[i]) > ra + rb)return false;
 	}
 	//Ž²L=B0, L=B1, L=B2”»’è
 	for (int i = 0; i < 3; i++)

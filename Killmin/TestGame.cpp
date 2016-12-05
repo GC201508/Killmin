@@ -6,12 +6,19 @@ void TestGame::Init()
 
 	sonya.Init(g_pd3dDevice);
 	stage.Init(g_pd3dDevice);
-	
+	box.Init(g_pd3dDevice);
+	star.Init(g_pd3dDevice);
+
 	sonya.SetPosition(Vec3(0.0f, 1.04f, 0.0f));
 	stage.SetPosition(Vec3(0.0f, 0.0f, 0.0f));
-	
+	box.SetPosition(Vec3(0.0f, 0.5f, 3.5f));
+	star.SetPosition(Vec3(0.0f, 3.5f, 3.5f));
+
+/*ShadowMap Init*/
 	stage.setShadowMap(&shadowMap);
 	stage.setIsShadowReceiver(true);
+	box.setShadowMap(&shadowMap);
+	box.setIsShadowReceiver(true);
 
 	player.setInit(&sonya, &camera, &shadowMap);
 
@@ -60,6 +67,8 @@ void TestGame::Render()
 
 	sonya.Render(g_pd3dDevice, camera, light);
 	stage.Render(g_pd3dDevice, camera, light);
+	box.Render(g_pd3dDevice, camera, light);
+	star.Render(g_pd3dDevice, camera, light);
 
 /*2DTex Dorw*/
 	playerLifeBer.DrawLifeBer();
@@ -88,17 +97,22 @@ void TestGame::Update()
 
 	sonya.Update();
 	stage.Update();
+	box.Update();
+	star.Update(); 
 
 	player.Update();
 
 	shadowMap.Update();
 
 	playerLifeBer.Update();
+	
+	CollisionOBB testobb;
+
 	if (onKey('T'))
 	{
 		playerLifeBer.AddValue(-1);
 	}
-	else if (onKey('Y'))
+	else if (onKey('Y') or testobb.CollisionOBBOBB(&sonya.getOBB(), &box.getOBB()))
 	{
 		playerLifeBer.AddValue(1);
 	}
