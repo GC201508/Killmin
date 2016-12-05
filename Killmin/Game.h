@@ -18,8 +18,6 @@
 
 //役割
 #include "Player.h"
-#include "Pikumin.h"
-
 //スキンモデル
 #include "SkinModel.h"
 #include "ModelData.h"
@@ -35,8 +33,7 @@ class Game
 	class Tiger       : public Model{ LPCTSTR FileName()override { return "Assets/model/tiger.X"         ; } }tora		;      //とらちゃん
 	class Ground      : public Model{ LPCTSTR FileName()override { return "Assets/model/ground.X"        ; } }ground	;     //地面
 	class Sonya       : public Model{ LPCTSTR FileName()override { return "Assets/model/sn/ソーニャ.X"   ; } }sonya		;    //ソーニャちゃん
-	class TestPikumin : public Model{ LPCTSTR FileName()override { return "Assets/model/TyokurituTiger.X"; } }pikuTiger	;	//ピクミンタイガーちゃん
-	class TestStage : public Model{ LPCTSTR FileName()override{ return"Assets/model/TestKusaStage.X"; } }testStage;		   //テストステージ
+	class TestStage	  : public Model{ LPCTSTR FileName()override{ return"Assets/model/TestKusaStage.X"; } }testStage;		   //テストステージ
 	//TODO:(たけまさ,)素敵なライト確認用,
 	class ball        : public Model{ LPCTSTR FileName()override { return "Assets/model/sphere.X"        ; } }testball	;	//テストボール
 
@@ -50,7 +47,6 @@ class Game
 
 	//なんとかなんとか
 	Player		player;		//プレイヤー
-	Pikumin		pikumin;	//ぴくみん
 
 	//スキンモデル
 	SkinModel skinmodel;

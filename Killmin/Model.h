@@ -21,12 +21,18 @@ public:
 
 	void Release();
 
-
-
 //set
 	void SetPosition(D3DXVECTOR3 pos);
 	void setWorld(Matrix wol){ mWorld = wol; }
 	void setIsRenderShadowMap(bool b){ isRenderShadowMap = b; }
+
+	void setAngleX(float x){ angleX = x; }
+	void setAngleY(float y){ angleY = y; }
+	void setAngleZ(float z){ angleZ = z; }
+
+	void addAngleX(float x){ angleX += x; }
+	void addAngleY(float y){ angleY += y; }
+	void addAngleZ(float z){ angleZ += z; }
 
 	// * @brief		ShadowMapクラス
 	void setShadowMap(ShadowMap* sm){ lpShadowMap = sm; }
@@ -41,9 +47,14 @@ public:
 	Vec3 getWorldOffset(){ Matrix w = mWorld; return Vec3(w._41,w._42,w._43); }
 	Matrix getRotation(){ return mRotation; }
 	LPD3DXMESH getMesh(){ return mesh; }
+	OBB getOBB(){ return modelOBB; }
+
+	float getAngleX(){ return angleX; }
+	float getAngleY(){ return angleY; }
+	float getAngleZ(){ return angleZ; }
 
 	Vec3* lpPos()    { return &position; }	//posアドレス
-	float* lpAngle() { return &angle; }		//angleアドレス
+	//float* lpAngle() { return &angleY; }		//angleアドレ
 
 protected:
 	//読み込むXファイル指定す
@@ -58,7 +69,10 @@ protected:
 	D3DXMATRIX	mRotation;			//回転行列,
 
 	Matrix mTrans;
-	float angle;
+
+	float angleX;
+	float angleY;
+	float angleZ;
 
 	/*ShadowMap*/
 	ShadowMap* lpShadowMap;	//ShadowMapクラスのぽいんた,

@@ -12,7 +12,6 @@ void Game::GameInit()
 	tora     .Init(g_pd3dDevice);
 	ground   .Init(g_pd3dDevice);
 	sonya    .Init(g_pd3dDevice);
-	pikuTiger.Init(g_pd3dDevice);
 	testball .Init(g_pd3dDevice);
 
 
@@ -21,7 +20,6 @@ void Game::GameInit()
 	tora     .SetPosition(Vec3(0.5f	, 0.77f	, 0.0f	)) ;
 	ground   .SetPosition(Vec3(0.0f	, -3.5f	, 0.0f	)) ;
 	sonya    .SetPosition(Vec3(-3.0f, 1.04f	, 0.0f	)) ;
-	pikuTiger.SetPosition(Vec3(0.f	, 0.f	, 10.f	)) ;
 	testball .SetPosition(Vec3(10.f	, 20.f	, 200.f	)) ;
 
 	//しゃどうま
@@ -47,11 +45,6 @@ void Game::GameInit()
 
 	//シャドマップ
 	shadowMap.Init(g_pd3dDevice, &camera, &light, player.getLpPlayerModel());
-
-	//ぴくみん情報追加,
-	pikumin.setModel(&pikuTiger);
-	pikumin.setLPPlayerPos(player.getLpPlayerModel()->lpPos());
-	pikumin.Init();
 
 	//かえらしょきあ,
 	camera.Init();
@@ -111,7 +104,6 @@ void Game::GameRender()
 	tora     .Render(g_pd3dDevice, camera, light); //とらちゃん,
 	ground   .Render(g_pd3dDevice, camera, light); //地面,
 	sonya    .Render(g_pd3dDevice, camera, light); //ソーニャちゃん,
-	pikuTiger.Render(g_pd3dDevice, camera, light); //ピクミン虎ちゃん,
 	testball .Render(g_pd3dDevice, camera, light); //テストボール,
 
 	skinmodel.Draw(&camera.GetViewMatrix(), &camera.GetProjectionMatrix());
@@ -159,7 +151,6 @@ void Game::GameUpdate()
 	tora     .Update();         //とらちゃん,
 	sonya    .Update();        //そにゃちゃん,
 	ground   .Update();       //じめん,
-	pikuTiger.Update();      //ぴくぴくとらちゃん,
 	testball .Update();		//テストボアール,
 
 
@@ -184,6 +175,5 @@ void Game::GameTerminate()
 	tora     .Release();
 	ground   .Release();
 	sonya    .Release();
-	pikuTiger.Release();
 	testball .Release();
 }

@@ -12,7 +12,9 @@ Model::Model()
 	position.x        = 0.0f;
 	position.y        = 0.0f;
 	position.z        = 0.0f;
-	angle             = D3DXToRadian(0.f);
+	angleX            = D3DXToRadian(0.f);
+	angleY            = D3DXToRadian(0.f);
+	angleZ            = D3DXToRadian(0.f);
 	lpShadowMap       = nullptr;
 	texToonMap		  = NULL;
 	setIsRenderShadowMap(false);
@@ -110,7 +112,7 @@ void Model::Update()
 	D3DXMatrixTranslation(&mTrans, position.x, position.y, position.z);
 
 	//回転行列の更新
-	D3DXMatrixRotationY(&mRotation, angle);
+	D3DXMatrixRotationY(&mRotation, angleY);
 	setWorld(mRotation * mTrans);
 }
 
@@ -134,6 +136,7 @@ void Model::SetUpTechnique(LPDIRECT3DDEVICE9 pd3dDevice, Camera camera, Light li
 				{
 					D3DXCreateTextureFromFileA(pd3dDevice,
 						"Assets/model/sn/ToonShadow.png",         //トゥーンマップテクスチャーファイル名
+						//"Assets/model/ShadowTiger.bmp",
 						&texToonMap);
 				}
 			}

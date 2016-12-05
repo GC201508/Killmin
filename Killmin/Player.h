@@ -25,13 +25,13 @@ private:
 
 	void Move();
 	void camToPosUpdate();
-
-	Model* lpModel;
-	Camera* lpCam;
-	ShadowMap* lpShadowMap;
-	Vec3* addPos;
+	
+	Model*		lpModel;
+	Camera*		lpCam;
+	ShadowMap*	lpShadowMap;
+	//Vec3* addPos;
 	Vec3 camToPos; //Eye(視覚) - Lookat(注視点)のベクトルを格納する
-	float* AngleY;
+	
 	D3DXVECTOR3 direction;
 
 };
