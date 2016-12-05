@@ -53,9 +53,9 @@ void Player::Move()
 {//プレイヤーを動かす
 	dxFor::xzDir dir;
 	InputKey Input;
-	float spd     = PLAYER_SPEED;
-	Vec3 LocalPos = lpModel->GetPosition();
-	Vec3 move = LocalPos;
+	float spd = PLAYER_SPEED;
+	Vec3 LocalPos = lpModel->GetPosition(); //移動前pos
+	Vec3 move     = lpModel->GetPosition(); //移動後pos
 
 	dir.x = -XInput->getLeftStickX() * spd;
 	dir.z = -XInput->getLeftStickY() * spd;

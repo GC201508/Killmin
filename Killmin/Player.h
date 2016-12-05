@@ -29,7 +29,6 @@ private:
 	Model*		lpModel;
 	Camera*		lpCam;
 	ShadowMap*	lpShadowMap;
-	//Vec3* addPos;
 	Vec3 camToPos; //Eye(視覚) - Lookat(注視点)のベクトルを格納する
 	
 	D3DXVECTOR3 direction;
