@@ -32,9 +32,6 @@
     <Filter Include="Source\04 PLAYER">
       <UniqueIdentifier>{7f485401-50a9-4f65-be4c-5a63264188a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\05 PIKUMIN">
-      <UniqueIdentifier>{9d31983d-8e46-474d-ae61-e773f2947630}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\08 RENDER_TARGET">
       <UniqueIdentifier>{5d9a29f7-c66e-4602-9d23-854d96c883b5}</UniqueIdentifier>
     </Filter>
@@ -63,9 +60,6 @@
     </ClCompile>
     <ClCompile Include="System.cpp">
       <Filter>Source\99 _lib</Filter>
-    </ClCompile>
-    <ClCompile Include="Pikumin.cpp">
-      <Filter>Source\05 PIKUMIN</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source\00 CAMERA</Filter>
@@ -131,9 +125,6 @@
     </ClInclude>
     <ClInclude Include="D3dxFormula.h">
       <Filter>Source\99 _lib</Filter>
-    </ClInclude>
-    <ClInclude Include="Pikumin.h">
-      <Filter>Source\05 PIKUMIN</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source\00 CAMERA</Filter>

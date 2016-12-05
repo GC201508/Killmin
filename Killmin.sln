@@ -14,8 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{277CBB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{B03B0CD3-84EA-4821-BBA1-BDF38E6F1AA8}"
 	ProjectSection(SolutionItems) = preProject
+		Killmin\Assets\model\box.x = Killmin\Assets\model\box.x
 		Killmin\Assets\model\ground.x = Killmin\Assets\model\ground.x
 		Killmin\Assets\model\sphere.X = Killmin\Assets\model\sphere.X
+		Killmin\Assets\model\Star.x = Killmin\Assets\model\Star.x
 		Killmin\Assets\model\TestKusaStage.x = Killmin\Assets\model\TestKusaStage.x
 		Killmin\Assets\model\tiger.x = Killmin\Assets\model\tiger.x
 		Killmin\Assets\model\TyokurituTiger.x = Killmin\Assets\model\TyokurituTiger.x

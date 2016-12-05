@@ -92,7 +92,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelData.cpp" />
-    <ClCompile Include="Pikumin.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="SkinModel.cpp" />
@@ -129,7 +128,6 @@
     <ClInclude Include="PadCode.h" />
     <ClInclude Include="SkinModel.h" />
     <ClInclude Include="USBGamePad.h" />
-    <ClInclude Include="Pikumin.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Model.h" />
